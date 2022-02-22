@@ -9,6 +9,7 @@ extends Node
 # ----------------------------------------------
 signal input_direction_changed(input_direction)
 signal jump_changed(pressed)
+signal sprint_changed(pressed)
 signal mouse_moved_x(pixel)
 signal mouse_moved_y(pixel)
 
@@ -22,6 +23,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	_check_movement_input(event)
 	_check_jump_input(event)
+	_check_sprint_input(event)
 	_check_look_input(event)
 	_check_mouse_lock(event)
 
@@ -54,6 +56,12 @@ func _check_jump_input(event: InputEvent) -> void:
 		return
 
 	emit_signal("jump_changed", event.is_pressed())
+
+func _check_sprint_input(event: InputEvent) -> void:
+	if event.is_echo() or !event.is_action("movement_sprint"):
+		return
+
+	emit_signal("sprint_changed", event.is_pressed())
 	
 func _check_mouse_lock(event: InputEvent) -> void:
 	if not event.is_action_pressed("ui_cancel"):

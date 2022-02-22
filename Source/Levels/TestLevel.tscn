@@ -58,4 +58,4 @@ mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( -0.0373762, 0, -0.999301, 0, 1, 0, 0.999301, 0, -0.0373762, 0, 1, 0 )
+transform = Transform( -0.0373762, 0, -0.999301, 0, 1, 0, 0.999301, 0, -0.0373762, 0, 0, 0 )

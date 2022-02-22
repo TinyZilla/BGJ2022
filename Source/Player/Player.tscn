@@ -30,7 +30,8 @@ transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.264, 
 [node name="DirectionPointer" parent="Body" index="0"]
 visible = false
 
-[connection signal="input_direction_changed" from="Brain" to="Legs" method="set_direction"]
-[connection signal="jump_changed" from="Brain" to="Legs" method="jump"]
+[connection signal="input_direction_changed" from="Brain" to="MovementStateMachine" method="input_direction_changed"]
+[connection signal="jump_changed" from="Brain" to="MovementStateMachine" method="jump_changed"]
 [connection signal="mouse_moved_x" from="Brain" to="." method="_mouse_moved_x"]
 [connection signal="mouse_moved_y" from="Brain" to="Head" method="_mouse_moved_y"]
+[connection signal="sprint_changed" from="Brain" to="MovementStateMachine" method="sprint_changed"]

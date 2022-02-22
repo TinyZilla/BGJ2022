@@ -8,7 +8,7 @@ onready var state_list = \
 {
 	"Idle": get_node("Idle"),
 	"Walk": get_node("Walk"),
-	"Run": get_node("Run"),
+	"Sprint": get_node("Sprint"),
 	"Jump": get_node("Jump"),
 }
 
@@ -20,6 +20,8 @@ func _ready() -> void:
 	# Getting the States Ready.
 	for key in state_list.keys():
 		state_list[key].legs = legs
+
+	yield(legs, "ready")
 
 	state_list[current_state].enter()
 
@@ -49,13 +51,16 @@ func try_state_transition():
 # And dynamically Connect the signals to the current active state.
 
 func input_direction_changed(input_direction: Vector2) -> void:
-	for key in state_list.keys():
-		state_list[key].input_direction = input_direction
+	state_list[current_state].input_direction = input_direction
+	# for key in state_list.keys():
+	# 	state_list[key].input_direction = input_direction
 
 func jump_changed(jump: bool) -> void:
-	for key in state_list.keys():
-		state_list[key].jump = jump
+	state_list[current_state].jump = jump
+	# for key in state_list.keys():
+	# 	state_list[key].jump = jump
 
-func sprint_changed(sprint: bool) -> void:
-	for key in state_list.keys():
-		state_list[key].sprint = sprint
+func sprint_changed(sprint: bool) -> void:	
+	state_list[current_state].sprint = sprint
+	# for key in state_list.keys():
+	# 	state_list[key].sprint = sprint

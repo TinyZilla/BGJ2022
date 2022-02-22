@@ -1,6 +1,10 @@
 extends Node
 
 # ----------------------------------------------
+#                Signals
+# ----------------------------------------------
+signal landed
+# ----------------------------------------------
 #                Variables
 # ----------------------------------------------
 
@@ -21,6 +25,8 @@ var _jump_input: bool = false
 # Used by the class, Not updated.
 var _velocity: Vector3 = Vector3.ZERO
 var _kinematic_body: KinematicBody
+
+var _landed: bool = true
 
 # for horizontal calculations
 var _accel: float
@@ -114,6 +120,8 @@ func _physics_process(delta: float) -> void:
 func _jump() -> void:
 	_velocity.y = _jump_velocity
 
+	_landed = false
+
 func _air_movement(delta: float) -> void:
 	var gravity: float = _jump_gravity if _velocity.y > 0 else _fall_gravity
 	_velocity.y += gravity * delta
@@ -166,9 +174,12 @@ func _decel_floor(delta: float) -> void:
 	_velocity = _local_to_global(local_velocity)
 
 func _check_jump_buffer() -> void:
-	if _jump_input and _kinematic_body.is_on_floor():
-		_jump()
+	if not _landed and _kinematic_body.is_on_floor():
+		_landed = true
+		emit_signal("landed")
 
+		if _jump_input:
+			_jump()
 
 # ----------------------------------------------
 #                Helper Functions
