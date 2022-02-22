@@ -5,14 +5,14 @@ extends Node
 # ----------------------------------------------
 
 # Horizontal Variables.
-export(float) var _max_velocity: float = 10.0 # Meters per second
-export(float) var _accel_time: float = 0.2 # Second
-export(float) var _decel_time: float = 0.4 # Second
+export(float) var _max_velocity: float = 10.0 setget set_max_velocity # Meters per second
+export(float) var _accel_time: float = 0.2 setget set_accel_time # Seconds
+export(float) var _decel_time: float = 0.4 setget set_decel_time # Seconds
 
 # Vertical Variables.
-export(float) var _jump_height: float = 3.0 # meters.
-export(float) var _jump_time_to_peak: float = 0.3 # Second
-export(float) var _jump_time_to_ground: float = 0.4 # Second
+export(float) var _jump_height: float = 3.0 setget set_jump_height # meters.
+export(float) var _jump_time_to_peak: float = 0.3 setget set_jump_time_to_peak # Seconds
+export(float) var _jump_time_to_ground: float = 0.4 setget set_jump_time_to_ground # Seconds
 
 # Public facing Variable. Could be updated.
 var _direction: Vector2 = Vector2.ZERO
@@ -59,16 +59,46 @@ func jump(jump: bool) -> void:
 	_jump()
 
 # ----------------------------------------------
+#          Public Param Change Functions
+# ----------------------------------------------
+func set_max_velocity(velocity: float) -> void:
+	_max_velocity = velocity
+	_move_variable_calculation()
+
+func set_accel_time(time: float) -> void:
+	_accel_time = time
+	_move_variable_calculation()
+
+func set_decel_time(time: float) -> void:
+	_decel_time = time
+	_move_variable_calculation()
+
+func set_jump_height(jump_height: float) -> void:
+	_jump_height = jump_height
+	_jump_variable_calculation()
+
+func set_jump_time_to_peak(time_to_peak: float) -> void:
+	_jump_time_to_peak = time_to_peak
+	_jump_variable_calculation()
+
+func set_jump_time_to_ground(time_to_ground: float) -> void:
+	_jump_time_to_ground = time_to_ground
+	_jump_variable_calculation()
+
+# ----------------------------------------------
 #                Private Functions
 # ----------------------------------------------
 func _ready() -> void:
 	_kinematic_body = get_parent()
 
-	# Move variable calculations:
+	_move_variable_calculation()
+	_jump_variable_calculation()
+
+func _move_variable_calculation() -> void:
 	_accel = _max_velocity / _accel_time
 	_friction = _max_velocity / _decel_time
 
-	# Jump Variable calculations:
+func _jump_variable_calculation() -> void:
 	_jump_velocity = (2.0 * _jump_height) / _jump_time_to_peak
 	_jump_gravity = (-2.0 * _jump_height) / (_jump_time_to_peak * _jump_time_to_peak)
 	_fall_gravity = (-2.0 * _jump_height) / (_jump_time_to_ground * _jump_time_to_ground)

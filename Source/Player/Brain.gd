@@ -23,9 +23,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	_check_movement_input(event)
 	_check_jump_input(event)
 	_check_look_input(event)
+	_check_mouse_lock(event)
 
 func _check_look_input(event: InputEvent) -> void:
-	if not event is InputEventMouseMotion:
+	if not event is InputEventMouseMotion or not Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		return
 	
 	# Programmer's note. The X and Y values are pixel value on the screen.
@@ -53,4 +54,13 @@ func _check_jump_input(event: InputEvent) -> void:
 		return
 
 	emit_signal("jump_changed", event.is_pressed())
+	
+func _check_mouse_lock(event: InputEvent) -> void:
+	if not event.is_action_pressed("ui_cancel"):
+		return
+	
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
