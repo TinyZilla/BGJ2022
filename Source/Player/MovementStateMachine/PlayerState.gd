@@ -7,7 +7,9 @@ var jump: bool = false setget _set_jump
 var sprint: bool = false
 
 func enter(init_arg: Dictionary = {}) -> void:
-	print(name)	
+	# print(name)
+	# Tiny can uncomment this^^ bastard statement later,
+	# rn its driving me nuts
 
 	input_direction = init_arg.get("input_direction", Vector2.ZERO)
 	jump = init_arg.get("jump", false)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Source/Player/Head.gd" type="Script" id=1]
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Source/Player/Player.gd" type="Script" id=4]
 [ext_resource path="res://Models/SpaceGun/space_gun.gltf" type="PackedScene" id=5]
 [ext_resource path="res://Source/Player/MovementStateMachine/MovementStateMachine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Source/Player/GunSway.gd" type="Script" id=7]
 
 [node name="Player" instance=ExtResource( 2 )]
 script = ExtResource( 4 )
@@ -24,8 +25,13 @@ script = ExtResource( 1 )
 current = true
 size = 10.0
 
-[node name="space_gun" parent="Head/Camera" index="0" instance=ExtResource( 5 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.264, -0.251, -0.433 )
+[node name="SwayAnchor" type="Spatial" parent="Head/Camera" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.264, -0.251, -0.433 )
+script = ExtResource( 7 )
+lissajous_speed = 12.0
+
+[node name="space_gun" parent="Head/Camera/SwayAnchor" index="0" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="DirectionPointer" parent="Body" index="0"]
 visible = false

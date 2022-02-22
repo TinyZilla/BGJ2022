@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Navigation",
+"class": "GlobalNavigation",
+"language": "GDScript",
+"path": "res://Experiments/NavmeshTest/GlobalNavigation.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://Source/Player/MovementStateMachine/States.gd"
 } ]
 _global_script_class_icons={
+"GlobalNavigation": "",
 "State": ""
 }
 
@@ -23,6 +29,10 @@ _global_script_class_icons={
 config/name="Bgj 2022"
 run/main_scene="res://Source/Levels/TestLevel.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/dpi/allow_hidpi=true
 
 [input]
 
@@ -54,6 +64,11 @@ movement_jump={
 movement_sprint={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+LMB={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 
