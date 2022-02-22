@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Source/Player/MovementStateMachine/MovementStateMachine.gd" type="Script" id=1]
+[ext_resource path="res://Source/Player/MovementStateMachine/PlayerState.gd" type="Script" id=3]
+
+[node name="MovementStateMachine" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Walk" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Run" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Jump" type="Node" parent="."]
+script = ExtResource( 3 )

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Source/Player/Head.gd" type="Script" id=1]
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Source/Player/Brain.gd" type="Script" id=3]
 [ext_resource path="res://Source/Player/Player.gd" type="Script" id=4]
 [ext_resource path="res://Models/SpaceGun/space_gun.gltf" type="PackedScene" id=5]
+[ext_resource path="res://Source/Player/MovementStateMachine/MovementStateMachine.tscn" type="PackedScene" id=6]
 
 [node name="Player" instance=ExtResource( 2 )]
 script = ExtResource( 4 )
@@ -12,7 +13,10 @@ script = ExtResource( 4 )
 [node name="Brain" type="Node" parent="." index="0"]
 script = ExtResource( 3 )
 
-[node name="Head" type="Spatial" parent="." index="1"]
+[node name="MovementStateMachine" parent="." index="1" instance=ExtResource( 6 )]
+legs_path = NodePath("../Legs")
+
+[node name="Head" type="Spatial" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61092, 0 )
 script = ExtResource( 1 )
 
