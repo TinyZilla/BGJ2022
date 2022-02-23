@@ -1,5 +1,8 @@
 extends Node
 
+# Redundant Script,
+# All of this logic was moved to State Machine
+
 onready var _body: KinematicBody = get_parent()
 var nav: Navigation
 var player: Spatial
@@ -12,12 +15,6 @@ var prev_distance_squared: float
 
 signal direction_changed(direction)
 signal sprint_changed(pressed)
-
-func _ready() -> void:
-	init_pathfinding()
-
-func _physics_process(_delta: float) -> void:
-	process_pathfinding()
 
 func init_pathfinding():
 	yield(get_tree().create_timer(2.0), "timeout")

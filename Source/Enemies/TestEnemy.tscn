@@ -21,3 +21,6 @@ _max_velocity = 5.0
 
 [node name="Body" parent="." index="4"]
 material/0 = SubResource( 1 )
+
+[node name="BodyshotPosition" type="Position3D" parent="Body" index="1"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.54147e-09, -0.0352647 )

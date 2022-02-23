@@ -42,6 +42,9 @@ script = ExtResource( 8 )
 [node name="DirectionPointer" parent="Body" index="0"]
 visible = false
 
+[node name="BodyshotPosition" type="Position3D" parent="Body" index="1"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -5.58248e-09, -0.127712 )
+
 [connection signal="input_direction_changed" from="Brain" to="MovementStateMachine" method="input_direction_changed"]
 [connection signal="jump_changed" from="Brain" to="MovementStateMachine" method="jump_changed"]
 [connection signal="mouse_moved_x" from="Brain" to="." method="_mouse_moved_x"]

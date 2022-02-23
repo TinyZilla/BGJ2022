@@ -1,4 +1,7 @@
 extends KinematicBody
+class_name Player
+
+onready var bodyshot_position = $Body/BodyshotPosition
 
 func _ready() -> void:
 	Globals.player = self
