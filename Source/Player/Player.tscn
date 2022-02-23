@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Source/Player/Head.gd" type="Script" id=1]
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
@@ -8,6 +8,15 @@
 [ext_resource path="res://Source/Player/MovementStateMachine/MovementStateMachine.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Source/Player/GunSway.gd" type="Script" id=7]
 [ext_resource path="res://Source/Bullet/BulletSpawner.gd" type="Script" id=8]
+
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.5
+
+[sub_resource type="PrismMesh" id=2]
+size = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.121569, 0.92549, 0.988235, 1 )
 
 [node name="Player" instance=ExtResource( 2 )]
 collision_layer = 2
@@ -39,11 +48,19 @@ transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.98023e-08, 0.0689347, 0.18886 )
 script = ExtResource( 8 )
 
-[node name="DirectionPointer" parent="Body" index="0"]
+[node name="Body" type="MeshInstance" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="DirectionPointer" type="MeshInstance" parent="Body" index="0"]
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.528571, -0.591568 )
 visible = false
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
 
 [node name="BodyshotPosition" type="Position3D" parent="Body" index="1"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -5.58248e-09, -0.127712 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.54147e-09, -0.0352647 )
 
 [connection signal="input_direction_changed" from="Brain" to="MovementStateMachine" method="input_direction_changed"]
 [connection signal="jump_changed" from="Brain" to="MovementStateMachine" method="jump_changed"]

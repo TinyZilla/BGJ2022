@@ -22,6 +22,11 @@ func do_state_logic(delta : float) -> void:
 	if sight_raycast.is_colliding():
 		var collider = sight_raycast.get_collider()
 		if collider is Player:
+			# Keep Personal Space. Covid. Watch out!
+			if sight_raycast.global_transform.origin.distance_squared_to(sight_raycast.get_collision_point()) < 4:
+				emit_signal("direction_changed", Vector2.ZERO)
+				return
+			
 			# Can see player, chase after that mf
 			var origin_vector2 : Vector2 = Vector2(_body.global_transform.origin.x, _body.global_transform.origin.z)
 			var target_vector2 : Vector2 = Vector2(player.global_transform.origin.x, player.global_transform.origin.z)
