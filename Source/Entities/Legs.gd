@@ -49,9 +49,9 @@ func set_direction(direction: Vector2) -> void:
 	var local_velocity: Vector3 = _global_to_local(_velocity)
 
 	if sign(_direction.x) * sign(local_velocity.x) == -1:
-		_velocity.x = local_velocity.x * 0.1
+		_velocity.x = local_velocity.x * 0.05
 	if sign(_direction.y) * sign(local_velocity.z) == -1:
-		_velocity.z = local_velocity.z * 0.1
+		_velocity.z = local_velocity.z * 0.05
 	
 	_velocity = _local_to_global(local_velocity)
 

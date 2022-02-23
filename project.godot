@@ -30,6 +30,10 @@ config/name="Bgj 2022"
 run/main_scene="res://Source/Levels/TestLevel.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Source/Globals/Globals.gd"
+
 [display]
 
 window/dpi/allow_hidpi=true
