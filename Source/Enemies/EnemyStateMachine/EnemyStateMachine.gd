@@ -12,7 +12,7 @@ onready var state_list = \
 }
 
 func _ready():
-	state_list[current_state].enter()
+	state_list[current_state].call_deferred("enter")
 
 # Update function.
 func _physics_process(delta: float) -> void:

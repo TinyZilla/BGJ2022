@@ -42,10 +42,8 @@ func do_state_logic(_delta : float) -> void:
 	check_valid_nodes()
 	process_pathfinding()
 
-func init_pathfinding():
-	yield(get_tree().create_timer(2.0), "timeout")
-	
-	path = nav.get_simple_path(_body.global_transform.origin, Vector3.ZERO)
+func init_pathfinding():	
+	path = nav.get_simple_path(_body.global_transform.origin, current_target) # player.global_transform.origin)
 	current_index = 0
 	current_target = path[current_index]
 	
@@ -53,6 +51,8 @@ func init_pathfinding():
 	var target_vector2: Vector2 = Vector2(current_target.x, current_target.z)
 	
 	prev_distance_squared = origin_vector2.distance_squared_to(target_vector2)
+
+	do_pathfind_process = true
 	
 	emit_signal("direction_changed", origin_vector2.direction_to(target_vector2))
 
@@ -72,6 +72,8 @@ func process_pathfinding():
 		if current_index == path.size():
 			emit_signal("direction_changed", Vector2.ZERO)
 			do_pathfind_process = false
+
+			_band_aid()
 			return
 		
 		current_target = path[current_index]
@@ -103,3 +105,7 @@ func check_for_new_state() -> String:
 		if collider is Player:
 			return "Chase"
 	return "PathfindTarget"
+
+func _band_aid() -> void:
+	yield(get_tree().create_timer(2.0), "timeout")
+	enter(player.global_transform.origin)
