@@ -6,7 +6,7 @@ export(NodePath) var nav_path: NodePath
 
 var navigation: Navigation
 
-onready var bodyshot_position = $Body/BodyshotPosition
+onready var bodyshot_position = $Pivoit/Body/BodyshotPosition
 
 func _ready() -> void:
 	assert(not nav_path.is_empty(), name + " don't have a nav instance")
@@ -23,3 +23,5 @@ func _ready() -> void:
 func init_signals():
 	$EnemyStateMachine/PathfindTarget.connect("direction_changed", $Legs, "set_direction")
 	$EnemyStateMachine/Chase.connect("direction_changed", $Legs, "set_direction")
+	$EnemyStateMachine/PathfindTarget.connect("direction_changed", $Pivoit, "direction_changed")
+	$EnemyStateMachine/Chase.connect("direction_changed", $Pivoit, "direction_changed")
