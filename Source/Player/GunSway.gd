@@ -10,11 +10,12 @@ var mouse_movement := Vector2.ZERO
 var x_lag : float = 0.0
 var initial_transform : Transform
 var time_since_move : float = 0.0
+var mouse_moved_this_frame : bool = false
 
 func _input(event):
 	if event is InputEventMouseMotion:
+		mouse_moved_this_frame = true
 		mouse_movement = lerp(mouse_movement, -event.relative * mouse_damp, 0.5)
-		mouse_movement = -event.relative * mouse_damp
 
 # Apply rotation transforms in this order: Y, X, Z
 # Apply origin transform AFTER rotations
@@ -82,5 +83,11 @@ func _physics_process(delta):
 	else:
 		t.origin = translation.linear_interpolate(initial_transform.origin, 0.2)
 	
-	transform = t
-	mouse_movement = lerp(mouse_movement, Vector2.ZERO, 0.4)
+	# Interpolate rotations, but not translation
+	transform = transform.interpolate_with(t, 0.5)
+	transform.origin = t.origin
+	
+	if mouse_moved_this_frame:
+		mouse_moved_this_frame = false
+	else:
+		mouse_movement = lerp(mouse_movement, Vector2.ZERO, 0.4)
