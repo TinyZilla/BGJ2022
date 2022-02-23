@@ -35,9 +35,7 @@ geometry/source_group_name = "World"
 
 [node name="TestLevel" type="Spatial"]
 
-[node name="Floor" type="StaticBody" parent="." groups=[
-"World",
-]]
+[node name="Floor" type="StaticBody" parent="." groups=["World"]]
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
@@ -48,9 +46,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
-[node name="Toolbox" type="StaticBody" parent="." groups=[
-"World",
-]]
+[node name="Toolbox" type="StaticBody" parent="." groups=["World"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4246, 2.82347, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Toolbox"]
@@ -60,9 +56,7 @@ shape = SubResource( 4 )
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
-[node name="Toolbox2" type="StaticBody" parent="." groups=[
-"World",
-]]
+[node name="Toolbox2" type="StaticBody" parent="." groups=["World"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99347, 2.82347, -4.20113 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Toolbox2"]
@@ -89,3 +83,7 @@ environment = ExtResource( 5 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
 navmesh = SubResource( 7 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.653764, 0.399229, -0.642813, 0, 0.849497, 0.527594, 0.756698, -0.344922, 0.555371, 0, 6.5443, 0 )
+shadow_enabled = true

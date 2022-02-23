@@ -15,14 +15,14 @@ onready var state_list = \
 # Setup for the state machine.
 func _ready() -> void:
 	assert(not legs_path.is_empty(), "Need a reference to legs.")
-
+	
 	var legs: Node = get_node(legs_path)
 	# Getting the States Ready.
 	for key in state_list.keys():
 		state_list[key].legs = legs
-
+	
 	yield(legs, "ready")
-
+	
 	state_list[current_state].enter()
 
 # Update function.
