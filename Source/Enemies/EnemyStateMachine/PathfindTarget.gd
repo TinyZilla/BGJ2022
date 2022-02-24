@@ -95,6 +95,8 @@ func exit():
 	sight_raycast.enabled = false
 
 func check_for_new_state() -> String:
+	check_valid_nodes()
+	
 	if not is_instance_valid(player):
 		return "PathfindTarget"
 	

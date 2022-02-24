@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Source/Player/Head.gd" type="Script" id=1]
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Source/Player/GunSway.gd" type="Script" id=7]
 [ext_resource path="res://Source/Bullet/BulletSpawner.gd" type="Script" id=8]
 [ext_resource path="res://Source/Player/RecoilAnimation.gd" type="Script" id=9]
+
+[sub_resource type="CapsuleMesh" id=3]
+radius = 0.5
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -161,7 +164,14 @@ script = ExtResource( 3 )
 [node name="MovementStateMachine" parent="." index="1" instance=ExtResource( 6 )]
 legs_path = NodePath("../Legs")
 
-[node name="Head" type="Spatial" parent="." index="2"]
+[node name="Body" type="MeshInstance" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="BodyshotPosition" type="Position3D" parent="Body" index="0"]
+
+[node name="Head" type="Spatial" parent="." index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61092, 0 )
 script = ExtResource( 1 )
 
@@ -189,16 +199,6 @@ camera_path = NodePath("../../../..")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera/RecoilAnimation" index="1"]
 anims/RESET = SubResource( 2 )
 anims/fire = SubResource( 1 )
-
-[node name="Body" parent="." index="5"]
-mesh = null
-
-[node name="DirectionPointer" parent="Body" index="0"]
-visible = false
-mesh = null
-
-[node name="BodyshotPosition" type="Position3D" parent="Body" index="1"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.54147e-09, -0.0352647 )
 
 [connection signal="input_direction_changed" from="Brain" to="MovementStateMachine" method="input_direction_changed"]
 [connection signal="jump_changed" from="Brain" to="MovementStateMachine" method="jump_changed"]
