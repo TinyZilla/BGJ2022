@@ -16,6 +16,8 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_down"):
+		SkyfallManager.drop_group("default")
+	if event.is_action_pressed("ui_up"):
 		StateTransitionManager.transition()
 
 func spawn() -> void:
