@@ -42,6 +42,7 @@ Globals="*res://Source/Globals/Globals.gd"
 WaveManager="*res://Source/Globals/WaveManager.gd"
 EnemyObjectiveList="*res://Source/Globals/EnemyObjectiveList.gd"
 EnemySpawner="*res://Source/Globals/EnemySpawner.gd"
+StateTransitionManager="*res://Source/Globals/StateTransitionManager.tscn"
 
 [display]
 

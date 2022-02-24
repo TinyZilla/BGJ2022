@@ -13,9 +13,23 @@ signal sprint_changed(pressed)
 signal mouse_moved_x(pixel)
 signal mouse_moved_y(pixel)
 
+func enable() -> void:
+	set_process_unhandled_input(true)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func disable() -> void:
+	set_process_unhandled_input(false)
+	emit_signal("jump_changed", false)
+	emit_signal("sprint_changed", false)
+	emit_signal("input_direction_changed", Vector2.ZERO)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 # ----------------------------------------------
 #                Private Functions
 # ----------------------------------------------
+
+func _enter_tree() -> void:
+	StateTransitionManager.player_brain = self
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -13,6 +13,9 @@ var spawn_dict: Dictionary = {
 func _init() -> void:
 	rng.randomize()
 
+func add_spawn_point(location: Vector3) -> void:
+	spawn_points.append(location)
+
 func spawn(type: String) -> void:
 	if spawn_points.empty() or not spawn_dict.has(type):
 		print("No Spawn point or no enemy type.")
