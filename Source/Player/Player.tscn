@@ -151,15 +151,6 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="CapsuleMesh" id=1]
-radius = 0.5
-
-[sub_resource type="PrismMesh" id=2]
-size = Vector3( 0.5, 0.5, 0.5 )
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.121569, 0.92549, 0.988235, 1 )
-
 [node name="Player" instance=ExtResource( 2 )]
 collision_layer = 2
 script = ExtResource( 4 )
@@ -199,16 +190,12 @@ camera_path = NodePath("../../../..")
 anims/RESET = SubResource( 2 )
 anims/fire = SubResource( 1 )
 
-[node name="Body" type="MeshInstance" parent="." index="5"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
-mesh = SubResource( 1 )
-material/0 = null
+[node name="Body" parent="." index="5"]
+mesh = null
 
-[node name="DirectionPointer" type="MeshInstance" parent="Body" index="0"]
-transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.528571, -0.591568 )
+[node name="DirectionPointer" parent="Body" index="0"]
 visible = false
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+mesh = null
 
 [node name="BodyshotPosition" type="Position3D" parent="Body" index="1"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.54147e-09, -0.0352647 )
