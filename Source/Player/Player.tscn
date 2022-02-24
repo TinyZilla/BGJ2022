@@ -197,6 +197,10 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.98023
 script = ExtResource( 8 )
 camera_path = NodePath("../../../..")
 
+[node name="BulletRayCast" type="RayCast" parent="Head/Camera/RecoilAnimation/SwayAnchor/space_gun/BulletSpawner" index="0"]
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera/RecoilAnimation" index="1"]
 anims/RESET = SubResource( 2 )
 anims/fire = SubResource( 1 )
