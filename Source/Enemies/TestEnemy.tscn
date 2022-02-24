@@ -5,7 +5,7 @@
 [ext_resource path="res://Source/Enemies/EnemyBrain.gd" type="Script" id=3]
 [ext_resource path="res://Source/Enemies/EnemyStateMachine/EnemyStateMachine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Source/Enemies/EnemyRotation.gd" type="Script" id=5]
-[ext_resource path="res://Models/PirateEnemy/pirate_enemy_01.gltf" type="PackedScene" id=6]
+[ext_resource path="res://Models/PirateEnemy/pirate_enemy_inherited.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleMesh" id=2]
 radius = 0.5
@@ -33,7 +33,7 @@ _max_velocity = 5.0
 [node name="Pivoit" type="Spatial" parent="." index="4"]
 script = ExtResource( 5 )
 
-[node name="pirate_enemy_01" parent="Pivoit" index="0" instance=ExtResource( 6 )]
+[node name="PirateEnemyModel" parent="Pivoit" index="0" instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="Body" type="MeshInstance" parent="Pivoit" index="1"]

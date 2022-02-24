@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Source/Player/Head.gd" type="Script" id=1]
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Source/Player/GunSway.gd" type="Script" id=7]
 [ext_resource path="res://Source/Bullet/BulletSpawner.gd" type="Script" id=8]
 [ext_resource path="res://Source/Player/RecoilAnimation.gd" type="Script" id=9]
+[ext_resource path="res://Experiments/FPS_UI_Test/very_crappy_crosshair.png" type="Texture" id=10]
 
 [sub_resource type="CapsuleMesh" id=3]
 radius = 0.5
@@ -199,6 +200,35 @@ camera_path = NodePath("../../../..")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera/RecoilAnimation" index="1"]
 anims/RESET = SubResource( 2 )
 anims/fire = SubResource( 1 )
+
+[node name="HUD" type="CanvasLayer" parent="Head/Camera" index="1"]
+
+[node name="CrosshairControl" type="Control" parent="Head/Camera/HUD" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Head/Camera/HUD/CrosshairControl" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrosshairTexture" type="TextureRect" parent="Head/Camera/HUD/CrosshairControl/CenterContainer" index="0"]
+margin_left = 496.0
+margin_top = 284.0
+margin_right = 528.0
+margin_bottom = 316.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
 
 [connection signal="input_direction_changed" from="Brain" to="MovementStateMachine" method="input_direction_changed"]
 [connection signal="jump_changed" from="Brain" to="MovementStateMachine" method="jump_changed"]

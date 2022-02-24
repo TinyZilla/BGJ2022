@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Source/Shaders/general_toon.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo_color = Color( 0.905882, 0, 0.0901961, 1 )
+shader_param/shadow_size = 0.201
+shader_param/shadow_darkness = 0.3
+shader_param/side_shine_strength = 3.0
+shader_param/side_shine_color = Color( 1, 1, 1, 1 )
+shader_param/backhalo_size = 0.3
+shader_param/backhalo_color = Color( 1, 1, 1, 1 )
+shader_param/specular_size = 0.9
+shader_param/specular_offset = 0.5
+shader_param/specular_strength = 1.0
+shader_param/specular_tex_size = 10.0
+shader_param/use_shade_fresnel = false
+shader_param/shade_fresnel_darkness = 0.8
+shader_param/max_brightness = 1.0
