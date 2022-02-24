@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Models/SpaceGun/space_gun.gltf" type="PackedScene" id=1]
+[ext_resource path="res://Source/Shaders/general_toon.shader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/albedo_color = Color( 0.521569, 0.521569, 0.521569, 1 )
+shader_param/shadow_size = 0.4
+shader_param/shadow_darkness = 0.3
+shader_param/side_shine_strength = 3.0
+shader_param/side_shine_color = Color( 1, 1, 1, 1 )
+shader_param/backhalo_size = 0.3
+shader_param/backhalo_color = Color( 1, 1, 1, 1 )
+shader_param/specular_size = 0.9
+shader_param/specular_offset = 0.5
+shader_param/specular_strength = 1.0
+shader_param/specular_tex_size = 10.0
+shader_param/use_shade_fresnel = true
+shader_param/shade_fresnel_darkness = 0.8
+shader_param/max_brightness = 1.0
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/albedo_color = Color( 0.905882, 0, 0.105882, 1 )
+shader_param/shadow_size = 0.4
+shader_param/shadow_darkness = 0.3
+shader_param/side_shine_strength = 3.0
+shader_param/side_shine_color = Color( 1, 1, 1, 1 )
+shader_param/backhalo_size = 0.3
+shader_param/backhalo_color = Color( 1, 1, 1, 1 )
+shader_param/specular_size = 0.9
+shader_param/specular_offset = 0.5
+shader_param/specular_strength = 1.0
+shader_param/specular_tex_size = 10.0
+shader_param/use_shade_fresnel = true
+shader_param/shade_fresnel_darkness = 0.8
+shader_param/max_brightness = 1.0
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 2 )
+shader_param/albedo_color = Color( 0.905882, 0.643137, 0, 1 )
+shader_param/shadow_size = 0.4
+shader_param/shadow_darkness = 0.3
+shader_param/side_shine_strength = 3.0
+shader_param/side_shine_color = Color( 1, 1, 1, 1 )
+shader_param/backhalo_size = 0.3
+shader_param/backhalo_color = Color( 1, 1, 1, 1 )
+shader_param/specular_size = 0.9
+shader_param/specular_offset = 0.5
+shader_param/specular_strength = 1.0
+shader_param/specular_tex_size = 10.0
+shader_param/use_shade_fresnel = true
+shader_param/shade_fresnel_darkness = 0.8
+shader_param/max_brightness = 1.0
+
+[node name="space_gun" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="SpaceGun" parent="." index="0"]
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
+material/2 = SubResource( 3 )

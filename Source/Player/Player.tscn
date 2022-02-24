@@ -4,13 +4,13 @@
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Source/Player/Brain.gd" type="Script" id=3]
 [ext_resource path="res://Source/Player/Player.gd" type="Script" id=4]
-[ext_resource path="res://Models/SpaceGun/space_gun.gltf" type="PackedScene" id=5]
 [ext_resource path="res://Source/Player/MovementStateMachine/MovementStateMachine.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Source/Player/GunSway.gd" type="Script" id=7]
 [ext_resource path="res://Source/Objects/Bullet/BulletSpawner.gd" type="Script" id=8]
 [ext_resource path="res://Source/Player/RecoilAnimation.gd" type="Script" id=9]
 [ext_resource path="res://Experiments/FPS_UI_Test/very_crappy_crosshair.png" type="Texture" id=10]
 [ext_resource path="res://Source/Shaders/simple_spatial_glow.shader" type="Shader" id=11]
+[ext_resource path="res://Models/SpaceGun/space_gun_inherited.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CapsuleMesh" id=3]
 radius = 0.5
@@ -225,11 +225,10 @@ script = ExtResource( 7 )
 mouse_damp = 5.0
 lissajous_speed = 12.0
 
-[node name="space_gun" parent="Head/Camera/RecoilAnimation/SwayAnchor" index="0" instance=ExtResource( 5 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
+[node name="space_gun" parent="Head/Camera/RecoilAnimation/SwayAnchor" index="0" instance=ExtResource( 12 )]
 
 [node name="BulletSpawner" type="Spatial" parent="Head/Camera/RecoilAnimation/SwayAnchor/space_gun" index="1"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.98023e-08, 0.0689347, 0.18886 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0689347, -0.18886 )
 script = ExtResource( 8 )
 camera_path = NodePath("../../../..")
 
