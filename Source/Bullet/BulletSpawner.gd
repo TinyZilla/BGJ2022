@@ -11,6 +11,7 @@ const bullet_scene = preload("res://Source/Bullet/Bullet.tscn")
 
 func _ready():
 	bullet_raycast.set_as_toplevel(true)
+	bullet_raycast.enabled = true
 
 func _process(_delta):
 	bullet_raycast.global_transform = camera.global_transform

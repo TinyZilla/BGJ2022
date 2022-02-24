@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Source/Player/Head.gd" type="Script" id=1]
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Source/Bullet/BulletSpawner.gd" type="Script" id=8]
 [ext_resource path="res://Source/Player/RecoilAnimation.gd" type="Script" id=9]
 [ext_resource path="res://Experiments/FPS_UI_Test/very_crappy_crosshair.png" type="Texture" id=10]
+[ext_resource path="res://Source/Shaders/simple_spatial_glow.shader" type="Shader" id=11]
 
 [sub_resource type="CapsuleMesh" id=3]
 radius = 0.5
@@ -75,6 +76,18 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MuzzleFlash:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=1]
@@ -154,6 +167,27 @@ tracks/6/keys = {
 "method": "instance_bullet"
 } ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("MuzzleFlash:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false ]
+}
+
+[sub_resource type="SphereMesh" id=4]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 11 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/glow_strength = 5.0
 
 [node name="Player" instance=ExtResource( 2 )]
 collision_layer = 2
@@ -204,6 +238,12 @@ cast_to = Vector3( 0, 0, -1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera/RecoilAnimation" index="1"]
 anims/RESET = SubResource( 2 )
 anims/fire = SubResource( 1 )
+
+[node name="MuzzleFlash" type="MeshInstance" parent="Head/Camera/RecoilAnimation" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.071, -0.271 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
 
 [node name="HUD" type="CanvasLayer" parent="Head/Camera" index="1"]
 

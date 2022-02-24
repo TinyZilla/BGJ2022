@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Source/Shaders/simple_spatial_glow.shader" type="Shader" id=1]
+[ext_resource path="res://Source/Player/MuzzleFlashParticles.gd" type="Script" id=2]
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 1 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/glow_strength = 2.0
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+width = 512
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 0.55
+emission_shape = 5
+emission_ring_radius = 0.15
+emission_ring_inner_radius = 0.0
+emission_ring_height = 0.15
+emission_ring_axis = Vector3( 1, 0, 0 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.02
+scale_curve = SubResource( 9 )
+
+[sub_resource type="SphereMesh" id=7]
+
+[node name="MuzzleFlashParticles" type="Particles"]
+material_override = SubResource( 10 )
+emitting = false
+amount = 3
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
