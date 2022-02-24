@@ -8,3 +8,23 @@ func _enter_tree() -> void:
 
 func _mouse_moved_x(pixel: float) -> void:
 	rotation_degrees.y -= pixel * Globals.mouse_sensitivity
+
+# TMP
+func _ready() -> void:
+	# spawn()
+	pass
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_down"):
+		StateTransitionManager.transition()
+
+func spawn() -> void:
+	EnemySpawner.spawn("EnemyFollowers")
+	yield(get_tree().create_timer(2.0), "timeout")
+	EnemySpawner.spawn("EnemyFollowers")
+	yield(get_tree().create_timer(2.0), "timeout")
+	EnemySpawner.spawn("EnemyFollowers")
+	yield(get_tree().create_timer(2.0), "timeout")
+	EnemySpawner.spawn("EnemyFollowers")
+	yield(get_tree().create_timer(2.0), "timeout")
+	EnemySpawner.spawn("EnemyFollowers")
