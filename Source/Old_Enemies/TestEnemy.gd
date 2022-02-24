@@ -1,12 +1,17 @@
 extends KinematicBody
 
-
 # Reference to the navigation node.
 export(NodePath) var nav_path: NodePath
 
 var navigation: Navigation
 
 onready var bodyshot_position = $Pivoit/Body/BodyshotPosition
+
+func _enter_tree() -> void:
+	WaveManager.add_enemy()
+
+func _exit_tree() -> void:
+	WaveManager.remove_enemy()
 
 func _ready() -> void:
 	assert(not nav_path.is_empty(), name + " don't have a nav instance")

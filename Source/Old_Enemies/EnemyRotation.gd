@@ -8,11 +8,11 @@ func direction_changed(incoming_direction: Vector2) -> void:
 		do_rotate = false
 		return
 	
-	angle = Vector2(incoming_direction.x, -incoming_direction.y).angle() - PI/2
+	angle = Vector2(incoming_direction.x, -incoming_direction.y).angle()
 	do_rotate = true
 
 func _physics_process(_delta: float) -> void:
-	if not do_rotate or is_equal_approx(rotation.y, angle):
+	if not do_rotate:
 		return
 	
-	rotation.y = lerp_angle(rotation.y, angle, 0.05)
+	rotation.y = lerp_angle(rotation.y, angle - PI/2, 0.05)

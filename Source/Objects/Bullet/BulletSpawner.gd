@@ -7,7 +7,7 @@ export(NodePath) var camera_path
 onready var camera : Camera = get_node(camera_path)
 onready var bullet_raycast = $BulletRayCast
 
-const bullet_scene = preload("res://Source/Bullet/Bullet.tscn")
+const bullet_scene = preload("res://Source/Objects/Bullet/Bullet.tscn")
 
 func _ready():
 	bullet_raycast.set_as_toplevel(true)

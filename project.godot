@@ -39,6 +39,9 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Source/Globals/Globals.gd"
+WaveManager="*res://Source/Globals/WaveManager.gd"
+EnemyObjectiveList="*res://Source/Globals/EnemyObjectiveList.gd"
+EnemySpawner="*res://Source/Globals/EnemySpawner.gd"
 
 [display]
 

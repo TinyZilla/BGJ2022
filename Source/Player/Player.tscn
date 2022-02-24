@@ -7,7 +7,7 @@
 [ext_resource path="res://Models/SpaceGun/space_gun.gltf" type="PackedScene" id=5]
 [ext_resource path="res://Source/Player/MovementStateMachine/MovementStateMachine.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Source/Player/GunSway.gd" type="Script" id=7]
-[ext_resource path="res://Source/Bullet/BulletSpawner.gd" type="Script" id=8]
+[ext_resource path="res://Source/Objects/Bullet/BulletSpawner.gd" type="Script" id=8]
 [ext_resource path="res://Source/Player/RecoilAnimation.gd" type="Script" id=9]
 [ext_resource path="res://Experiments/FPS_UI_Test/very_crappy_crosshair.png" type="Texture" id=10]
 [ext_resource path="res://Source/Shaders/simple_spatial_glow.shader" type="Shader" id=11]
@@ -205,6 +205,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="BodyshotPosition" type="Position3D" parent="Body" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.57933e-08, 0.818856 )
 
 [node name="Head" type="Spatial" parent="." index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61092, 0 )
