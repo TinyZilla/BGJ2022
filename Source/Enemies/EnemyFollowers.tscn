@@ -9,6 +9,7 @@
 
 [node name="EnemyFollowers" instance=ExtResource( 2 )]
 collision_layer = 8
+collision_mask = 9
 script = ExtResource( 6 )
 
 [node name="Brain" type="Node" parent="." index="0"]
