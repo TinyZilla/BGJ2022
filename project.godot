@@ -44,6 +44,7 @@ EnemyObjectiveList="*res://Source/Globals/EnemyObjectiveList.gd"
 EnemySpawner="*res://Source/Globals/EnemySpawner.gd"
 StateTransitionManager="*res://Source/Globals/StateTransitionManager.tscn"
 SkyfallManager="*res://Source/Globals/SkyfallManager.tscn"
+GameManager="*res://Source/Globals/GameManager.gd"
 
 [display]
 

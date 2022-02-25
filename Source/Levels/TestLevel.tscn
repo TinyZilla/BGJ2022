@@ -10,7 +10,7 @@
 [ext_resource path="res://Source/Objects/OverheadCamera.gd" type="Script" id=8]
 [ext_resource path="res://Source/Levels/Level.gd" type="Script" id=9]
 [ext_resource path="res://Source/Objects/SkyfallLocation.gd" type="Script" id=10]
-[ext_resource path="res://Source/Objects/SkyfallBlock.gd" type="Script" id=11]
+[ext_resource path="res://Experiments/PLZREMOVEEnemyContainer.gd" type="Script" id=11]
 [ext_resource path="res://Source/Objects/SkyfallBlock.gd" type="Script" id=12]
 
 [sub_resource type="BoxShape" id=1]
@@ -75,7 +75,7 @@ material/0 = SubResource( 6 )
 
 [node name="Cube" type="StaticBody" parent="World"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.33445, 0.5, 3.83266 )
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="World/Cube"]
 shape = SubResource( 8 )
@@ -223,3 +223,4 @@ environment = ExtResource( 5 )
 transform = Transform( -0.0373762, 0, -0.999301, 0, 1, 0, 0.999301, 0, -0.0373762, 0, 0, 0 )
 
 [node name="EnemyContainer" type="Spatial" parent="."]
+script = ExtResource( 11 )

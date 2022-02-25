@@ -19,6 +19,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		SkyfallManager.drop_group("default")
 	if event.is_action_pressed("ui_up"):
 		StateTransitionManager.transition()
+	if event.is_action_pressed("ui_left"):
+		spawn()
 
 func spawn() -> void:
 	EnemySpawner.spawn("EnemyFollowers")

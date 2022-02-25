@@ -21,4 +21,3 @@ func drop_group(group_str: String) -> void:
 
 func tween_finished() -> void:
 	emit_signal("skyfall_finished")
-	print("done")
