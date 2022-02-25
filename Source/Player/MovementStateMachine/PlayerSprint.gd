@@ -19,7 +19,7 @@ func enter(init_arg: Dictionary = {}) -> void:
 func check_for_new_state() -> String:
 	if jump:
 		return "Jump"
-	if not sprint:
+	if not sprint or input_direction.y >= 0.0:
 		return "Walk"
 	if is_zero_approx(input_direction.length_squared()):
 		return "Idle"
