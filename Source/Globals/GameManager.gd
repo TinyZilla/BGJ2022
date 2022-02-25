@@ -45,6 +45,14 @@ var event_list: Array = [
 	{
 		"action": "viewchange"
 	},
+	{
+		"action": "pause",
+		"duration": 2.0
+	},
+	{
+		"action": "skyfall",
+		"group": "intermission2"
+	},
 ]
 
 # Actually start the game.

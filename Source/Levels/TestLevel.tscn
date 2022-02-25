@@ -172,6 +172,54 @@ shape = SubResource( 6 )
 mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
 
+[node name="Cube10" type="StaticBody" parent="World"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9636, 0.5, -24.4888 )
+script = ExtResource( 12 )
+group = "intermission2"
+
+[node name="CollisionShape" type="CollisionShape" parent="World/Cube10"]
+shape = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="World/Cube10"]
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="Cube11" type="StaticBody" parent="World"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9636, 0.5, -20.8785 )
+script = ExtResource( 12 )
+group = "intermission2"
+
+[node name="CollisionShape" type="CollisionShape" parent="World/Cube11"]
+shape = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="World/Cube11"]
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="Cube12" type="StaticBody" parent="World"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.316, 0.5, -20.8785 )
+script = ExtResource( 12 )
+group = "intermission2"
+
+[node name="CollisionShape" type="CollisionShape" parent="World/Cube12"]
+shape = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="World/Cube12"]
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="Cube13" type="StaticBody" parent="World"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.316, 0.5, -24.7951 )
+script = ExtResource( 12 )
+group = "intermission2"
+
+[node name="CollisionShape" type="CollisionShape" parent="World/Cube13"]
+shape = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="World/Cube13"]
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
 [node name="EnemyObectivesContainer" type="Spatial" parent="."]
 
 [node name="EnemyObjective" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
