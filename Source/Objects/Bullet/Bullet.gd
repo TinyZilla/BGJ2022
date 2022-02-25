@@ -5,6 +5,7 @@ var old_pos : Vector3
 
 const DAMAGE = 1
 const blood_splatter = preload("res://Source/VFX/BloodSplatter.tscn")
+const bullet_pop = preload("res://Source/VFX/BulletPop.tscn")
 
 func _ready():
 	old_pos = global_transform.origin
@@ -25,6 +26,7 @@ func _check_collision() -> void:
 	if (not intersection.empty()):
 		var pos = intersection.position
 		var normal = intersection.normal
+		hit()
 		sudoku()
 		return
 	
@@ -36,12 +38,19 @@ func _check_collision() -> void:
 			if collider is Enemy:
 				collider.hurt(DAMAGE)
 				blood_hit()
+			else:
+				hit()
 		sudoku()
 
 func blood_hit():
 	var bs = blood_splatter.instance()
 	get_tree().current_scene.add_child(bs)
 	bs.global_transform.origin = global_transform.origin
+
+func hit():
+	var bp = bullet_pop.instance()
+	get_tree().current_scene.add_child(bp)
+	bp.global_transform.origin = global_transform.origin
 
 func sudoku():
 	queue_free()
