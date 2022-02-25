@@ -12,6 +12,18 @@ var event_list: Array = [
 		"group": "default"
 	},
 	{
+		"action": "reset_objective",
+		"group": "objective_stage_1"
+	},
+	{
+		"action": "pause",
+		"duration": 1.0
+	},
+	{
+		"action": "skyfall_objective",
+		"group": "objective_stage_1"
+	},
+	{
 		"action": "pause",
 		"duration": 1.0
 	},
@@ -53,6 +65,59 @@ var event_list: Array = [
 		"action": "skyfall",
 		"group": "intermission2"
 	},
+	{
+		"action": "reset_objective",
+		"group": "objective_stage_1"
+	},
+	{
+		"action": "pause",
+		"duration": 1.0
+	},
+	{
+		"action": "skyfall_objective",
+		"group": "objective_stage_1"
+	},
+	{
+		"action": "pause",
+		"duration": 1.0
+	},
+	{
+		"action": "viewchange"
+	},
+	{
+		"action": "pause",
+		"duration": 5.0
+	},
+	{
+		"action": "spawn_enemies",
+		"enemies": {
+			"EnemyFollowers": 2
+		},
+		"next_event_trigger_at": 1,
+		"reset_from_index": 14
+	},
+	{
+		"action": "spawn_enemies",
+		"enemies": {
+			"EnemyFollowers": 2
+		},
+		"next_event_trigger_at": 0,
+		"reset_from_index": 14
+	},
+	{
+		"action": "pause",
+		"duration": 2.0
+	},
+	{
+		"action": "viewchange"
+	},
+	{
+		"action": "pause",
+		"duration": 2.0
+	},
+	{
+		"action": "end_game"
+	}
 ]
 
 var current_index: int = 0
@@ -66,6 +131,9 @@ func do_event() -> void:
 	print(event.action)
 
 	match event.action:
+		"end_game":
+			Globals.user_interface.show_end_screen()
+			yield(get_tree().create_timer(0.1), "timeout")
 		"pause":
 			yield(get_tree().create_timer(event.duration), "timeout")
 		"skyfall":
@@ -75,6 +143,19 @@ func do_event() -> void:
 
 			SkyfallManager.drop_group(event.group)
 			yield(SkyfallManager, "skyfall_finished")
+		"skyfall_objective":
+			SkyfallManager.drop_group(event.group)
+			yield(SkyfallManager, "skyfall_finished")
+			EnemyObjectiveList.ready_obj_group(event.group)
+		"reset_objective":
+			EnemyObjectiveList.reset_objective_list(event.group)
+			if WaveManager.reset:
+				yield(get_tree().create_timer(3.0), "timeout")
+				Globals.user_interface.show_retry_menu()
+				yield(Globals.user_interface, "resume_pressed")
+			else:
+				# Idk why this is needed but Godot yell at me if it's not here.....
+				yield(get_tree().create_timer(0.1), "timeout")
 		"viewchange":
 			StateTransitionManager.transition()
 			yield(StateTransitionManager, "transition_finished")
@@ -89,13 +170,10 @@ func do_event() -> void:
 				StateTransitionManager.transition()
 				yield(StateTransitionManager, "transition_finished")
 
-				# Wait 10 Second.
-				print("Pausing 10 seconds ......")
-				yield(get_tree().create_timer(10.0), "timeout")
-
 				# Resume from a Checkpoint
 				print("Resuming......")
 				current_index = event.get("reset_from_index", 0)
+				return
 	current_index += 1
 
 

@@ -287,6 +287,7 @@ environment = ExtResource( 5 )
 script = ExtResource( 14 )
 
 [node name="MainMenu" type="Control" parent="UI"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -319,6 +320,65 @@ margin_top = -137.0
 margin_right = 278.496
 margin_bottom = 75.0
 color = Color( 0.168627, 0.505882, 0.247059, 1 )
+
+[node name="RetryMenu" type="Control" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlurShader" type="ColorRect" parent="UI/RetryMenu"]
+material = SubResource( 11 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RetryButton" type="Button" parent="UI/RetryMenu"]
+anchor_left = 0.518
+anchor_top = 0.5
+anchor_right = 0.518
+anchor_bottom = 0.5
+margin_left = -89.432
+margin_top = 50.0
+margin_right = 88.568
+margin_bottom = 137.0
+text = "Retry From Checkpoint"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndScreen" type="Control" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlurShader" type="ColorRect" parent="UI/EndScreen"]
+material = SubResource( 11 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/EndScreen"]
+margin_left = 481.0
+margin_top = 209.0
+margin_right = 566.0
+margin_bottom = 223.0
+text = "End Reached!
+
+Thank You for Playing
+
+Credits:
+----
+-----
+----
+-----"
+align = 1
 
 [node name="HUD" type="Control" parent="UI"]
 visible = false
@@ -365,4 +425,5 @@ transform = Transform( -0.0373762, 0, -0.999301, 0, 1, 0, 0.999301, 0, -0.037376
 script = ExtResource( 11 )
 
 [connection signal="pressed" from="UI/MainMenu/StartGame" to="UI" method="_on_StartGame_pressed"]
+[connection signal="pressed" from="UI/RetryMenu/RetryButton" to="UI" method="_on_RetryButton_pressed"]
 [connection signal="player_active_changed" from="Player" to="UI" method="player_active_changed"]

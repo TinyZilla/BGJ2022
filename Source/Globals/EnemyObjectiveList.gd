@@ -1,6 +1,5 @@
 extends Node
 
-
 # has a signal (Objective Updated)
 # When Enemy spawns, it grabs an objective from the list.
 # Enemy subscribes to the Objective signal.
@@ -15,6 +14,16 @@ func get_current_objective() -> Vector3:
 		return Vector3.ZERO
 	
 	return objective_list.front()
+
+func reset_objective_list(group_name: String) -> void:
+	for node in get_tree().get_nodes_in_group(group_name):
+		node.destoryed(true)
+
+	objective_list.clear()
+
+func ready_obj_group(group_name: String) -> void:
+	for node in get_tree().get_nodes_in_group(group_name):
+		node.add_to_objective()
 
 func objective_added(location: Vector3) -> void:
 	objective_list.append(location)
