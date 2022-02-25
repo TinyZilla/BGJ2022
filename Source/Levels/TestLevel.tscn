@@ -50,9 +50,7 @@ script = ExtResource( 9 )
 
 [node name="========= Level Setup ==========" type="Node" parent="."]
 
-[node name="World" type="Spatial" parent="." groups=[
-"World",
-]]
+[node name="World" type="Spatial" parent="." groups=["World"]]
 
 [node name="Floor" type="StaticBody" parent="World"]
 

@@ -12,6 +12,7 @@ signal transition_finished(is_fps)
 
 # Player Brain
 var player_brain: Node
+var player_gun : Spatial
 
 # Reference to the FPS Camera
 var player_cam: Camera
@@ -47,6 +48,7 @@ func on_ready() -> void:
 	overhead_cam.current = true
 
 	player_brain.disable()
+	player_gun.disable()
 
 	var _t = tween.connect("tween_all_completed", self, "tween_finished")
 
@@ -68,6 +70,7 @@ func transition() -> void:
 		_t = tween.interpolate_property(overhead_cam, "transform:origin", player_cam_global_transform.origin, overhead_cam_global_transform.origin, position_transition_time, pos_trans_type, pos_out_ease_type)
 
 		player_brain.disable()
+		player_gun.disable()
 		player_cam.current = false
 		overhead_cam.current = true
 
@@ -79,4 +82,5 @@ func tween_finished() -> void:
 		overhead_cam.current = false
 		player_cam.current = true
 		player_brain.enable()
+		player_gun.enable()
 	emit_signal("transition_finished", is_fps)
