@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Experiments/JustBetterEnvironment/BetterEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://Source/Player/Player.tscn" type="PackedScene" id=2]
@@ -74,6 +74,27 @@ points = PoolVector3Array( 0, 37.5, 6, 37.5, -37.5, 6, 0, 37.5, -6, -37.5, -37.5
 
 [sub_resource type="ConvexPolygonShape" id=21]
 points = PoolVector3Array( 0, 37.5, 6, 37.5, -37.5, 6, 0, 37.5, -6, -37.5, -37.5, 6, 37.5, -37.5, -6, -37.5, -37.5, -6 )
+
+[sub_resource type="CylinderMesh" id=23]
+top_radius = 18.0
+bottom_radius = 18.0
+height = 12.0
+
+[sub_resource type="CubeMesh" id=24]
+size = Vector3( 50, 12, 36 )
+
+[sub_resource type="CylinderShape" id=25]
+radius = 18.0
+height = 12.0
+
+[sub_resource type="ConvexPolygonShape" id=26]
+points = PoolVector3Array( -25, -6, -18, -25, 6, -18, 25, -6, -18, -25, -6, 18, -25, 6, 18, 25, 6, -18, 25, -6, 18, 25, 6, 18 )
+
+[sub_resource type="CubeMesh" id=27]
+size = Vector3( 32, 12, 32 )
+
+[sub_resource type="BoxShape" id=28]
+extents = Vector3( 16, 6, 16 )
 
 [node name="Level1" type="Spatial"]
 
@@ -178,7 +199,7 @@ material/0 = SubResource( 5 )
 [node name="StaticBody" type="StaticBody" parent="WorldObjects/PermanentCollision"]
 
 [node name="CollisionShape" type="CollisionShape" parent="WorldObjects/PermanentCollision/StaticBody"]
-transform = Transform( -0.148862, 0, 0.988858, 0, 1, 0, -0.988858, 0, -0.148862, 12.4251, 5.2, -182.301 )
+transform = Transform( -0.600881, 0, 0.799339, 0, 1, 0, -0.799339, 0, -0.600881, 15.1769, 5.2, -193.724 )
 shape = SubResource( 13 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="WorldObjects/PermanentCollision/StaticBody"]
@@ -220,6 +241,39 @@ shape = SubResource( 20 )
 [node name="CollisionShape10" type="CollisionShape" parent="WorldObjects/PermanentCollision/StaticBody"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 9.372, 6, 180.172 )
 shape = SubResource( 21 )
+
+[node name="Level2Objects" type="Spatial" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level2Objects"]
+transform = Transform( 0.759249, 0, -0.650801, 0, 1, 0, 0.650801, 0, 0.759249, -80.9865, 6, -108.302 )
+mesh = SubResource( 23 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level2Objects/MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0 )
+mesh = SubResource( 24 )
+material/0 = SubResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="Level2Objects/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Level2Objects/MeshInstance/StaticBody"]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Level2Objects/MeshInstance/StaticBody"]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 25, 0, 0 )
+shape = SubResource( 26 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Level2Objects"]
+transform = Transform( 0.832148, 0, -0.554554, 0, 1, 0, 0.554554, 0, 0.832148, 54.0957, 5.99999, 33.1479 )
+mesh = SubResource( 27 )
+material/0 = SubResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="Level2Objects/MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Level2Objects/MeshInstance2/StaticBody"]
+shape = SubResource( 28 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.786461, 0.61764, 0, -0.61764, 0.786461, 0, 11.4925, 0 )
