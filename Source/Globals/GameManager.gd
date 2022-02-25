@@ -67,7 +67,7 @@ var event_list: Array = [
 	},
 	{
 		"action": "reset_objective",
-		"group": "objective_stage_1"
+		"group": "objective_stage_2"
 	},
 	{
 		"action": "pause",
@@ -75,7 +75,7 @@ var event_list: Array = [
 	},
 	{
 		"action": "skyfall_objective",
-		"group": "objective_stage_1"
+		"group": "objective_stage_2"
 	},
 	{
 		"action": "pause",

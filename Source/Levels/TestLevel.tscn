@@ -244,6 +244,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51589, 0, 20.7166 )
 [node name="EnemyObjective2" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0945, 0, -19.8503 )
 
+[node name="EnemyObjective3" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.01936, 0, -19.8503 )
+group = "objective_stage_2"
+
+[node name="EnemyObjective4" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2626, 0, 13.7471 )
+group = "objective_stage_2"
+
 [node name="SpawnLocations" type="Spatial" parent="."]
 
 [node name="SpawnPoint" type="Position3D" parent="SpawnLocations"]
