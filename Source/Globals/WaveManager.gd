@@ -12,6 +12,21 @@ signal wave_ended
 var end_wave_at: int = 0
 var _current_enemy_count: int = 0
 
+var enemy_container: Spatial
+
+var reset: bool = false
+
+func terminate_wave_early() -> void:
+	reset = true
+
+	for child in enemy_container.get_children():
+		child.queue_free()
+
+	call_deferred("emit_signal", "wave_ended")
+
+func ready_wave() -> void:
+	reset = false
+
 func add_enemy() -> void:
 	_current_enemy_count += 1
 
@@ -38,4 +53,8 @@ func spawn_wave(wave_data: Dictionary) -> void:
 
 	for enemy in enemy_array:
 		EnemySpawner.spawn(enemy)
+		
 		yield(get_tree().create_timer(1), "timeout")
+
+		if reset:
+			break

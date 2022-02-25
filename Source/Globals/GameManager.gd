@@ -71,6 +71,11 @@ func start() -> void:
 				StateTransitionManager.transition()
 				yield(StateTransitionManager, "transition_finished")
 			"spawn_enemies":
+				WaveManager.ready_wave()
 				WaveManager.spawn_wave(event)
 				yield(WaveManager, "wave_ended")
+
+				if WaveManager.reset:
+					# Do some BS here.
+					print("Resetting. Currently Doing nothgin")
 			
