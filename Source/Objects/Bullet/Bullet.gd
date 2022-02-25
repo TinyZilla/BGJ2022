@@ -3,6 +3,9 @@ extends KinematicBody
 var velocity : Vector3 # Set by instancer
 var old_pos : Vector3
 
+const DAMAGE = 1
+const blood_splatter = preload("res://Source/VFX/BloodSplatter.tscn")
+
 func _ready():
 	old_pos = global_transform.origin
 	var _error = get_tree().create_timer(5).connect("timeout", self, "sudoku")
@@ -25,8 +28,20 @@ func _check_collision() -> void:
 		sudoku()
 		return
 	
-	if get_slide_count() > 1:
+	var slide_count : int = get_slide_count()
+	if slide_count > 0:
+		for i in range(slide_count):
+			var collision : KinematicCollision = get_slide_collision(i)
+			var collider = collision.collider
+			if collider is Enemy:
+				collider.hurt(DAMAGE)
+				blood_hit()
 		sudoku()
+
+func blood_hit():
+	var bs = blood_splatter.instance()
+	get_tree().current_scene.add_child(bs)
+	bs.global_transform.origin = global_transform.origin
 
 func sudoku():
 	queue_free()
