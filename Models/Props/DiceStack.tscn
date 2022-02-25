@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Models/MassExportTest/DicePip.material" type="Material" id=1]
 [ext_resource path="res://Models/MassExportTest/Toon_001.material" type="Material" id=2]
@@ -52,6 +52,18 @@ params_cull_mode = 2
 albedo_color = Color( 0, 0.0666667, 0.627451, 1 )
 roughness = 0.5
 
+[sub_resource type="ConvexPolygonShape" id=6]
+points = PoolVector3Array( 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5 )
+
+[sub_resource type="ConvexPolygonShape" id=7]
+points = PoolVector3Array( 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5 )
+
+[sub_resource type="ConvexPolygonShape" id=8]
+points = PoolVector3Array( 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5 )
+
+[sub_resource type="ConvexPolygonShape" id=9]
+points = PoolVector3Array( 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5 )
+
 [node name="DiceStack" type="Spatial"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 
@@ -78,3 +90,21 @@ transform = Transform( -1.00959e-07, -0.619683, 0.784852, 1, -1.62921e-07, 0, 1.
 mesh = SubResource( 1 )
 material/0 = SubResource( 5 )
 material/1 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21157, 0.601533, 0 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.92325, -0.384199, -6.25939e-08, 0, -1.62921e-07, 1, -0.384199, -0.92325, -1.50417e-07, -0.0817095, 0.601533, 0 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.89685, 0.442336, 7.20656e-08, 0, -1.62921e-07, 1, 0.442336, -0.89685, -1.46115e-07, 0.412668, 1.6, 0.582356 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -1.00959e-07, -0.619683, 0.784852, 1, -1.62921e-07, 0, 1.27869e-07, 0.784852, 0.619683, 0.0919361, 0.602427, 1.37439 )
+shape = SubResource( 9 )
