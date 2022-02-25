@@ -12,6 +12,10 @@ func _enter_tree() -> void:
 	health = MAX_HEALTH
 
 func _exit_tree() -> void:
+	var dfx = death_vfx.instance()
+	get_tree().current_scene.add_child(dfx)
+	dfx.global_transform = global_transform
+
 	WaveManager.remove_enemy()
 
 func hurt(damage : float) -> void:
@@ -19,8 +23,4 @@ func hurt(damage : float) -> void:
 	health = clamp(health, 0.0, MAX_HEALTH)
 	
 	if health == 0.0:
-		var dfx = death_vfx.instance()
-		get_tree().current_scene.add_child(dfx)
-		dfx.global_transform = global_transform
-		
 		queue_free()

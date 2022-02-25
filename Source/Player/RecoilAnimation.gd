@@ -6,7 +6,7 @@ onready var muzzle_flash = $MuzzleFlash
 const mf_particles = preload("res://Source/Player/MuzzleFlashParticles.tscn")
 
 func _ready():
-	StateTransitionManager.player_gun = self
+	get_owner().player_gun = self
 
 func _process(_delta):
 	if Input.is_action_just_pressed("LMB"):

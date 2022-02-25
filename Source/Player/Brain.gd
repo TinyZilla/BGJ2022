@@ -29,7 +29,7 @@ func disable() -> void:
 # ----------------------------------------------
 
 func _enter_tree() -> void:
-	StateTransitionManager.player_brain = self
+	get_owner().player_brain = self
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -1,34 +1,26 @@
 extends KinematicBody
 class_name Player
 
+signal player_active_changed(is_enable)
+
 onready var bodyshot_position = $Body/BodyshotPosition
+
+var player_gun: Spatial
+var player_brain: Node
 
 func _enter_tree() -> void:
 	Globals.player = self
+	StateTransitionManager.player = self
+
+func disable() -> void:
+	player_gun.disable()
+	player_brain.disable()
+	emit_signal("player_active_changed", false)
+
+func enable() -> void:
+	player_gun.enable()
+	player_brain.enable()
+	emit_signal("player_active_changed", true)
 
 func _mouse_moved_x(pixel: float) -> void:
 	rotation_degrees.y -= pixel * Globals.mouse_sensitivity
-
-# TMP
-func _ready() -> void:
-	# spawn()
-	pass
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_down"):
-		SkyfallManager.drop_group("default")
-	if event.is_action_pressed("ui_up"):
-		StateTransitionManager.transition()
-	if event.is_action_pressed("ui_left"):
-		spawn()
-
-func spawn() -> void:
-	EnemySpawner.spawn("EnemyFollowers")
-	yield(get_tree().create_timer(2.0), "timeout")
-	EnemySpawner.spawn("EnemyFollowers")
-	yield(get_tree().create_timer(2.0), "timeout")
-	EnemySpawner.spawn("EnemyFollowers")
-	yield(get_tree().create_timer(2.0), "timeout")
-	EnemySpawner.spawn("EnemyFollowers")
-	yield(get_tree().create_timer(2.0), "timeout")
-	EnemySpawner.spawn("EnemyFollowers")
