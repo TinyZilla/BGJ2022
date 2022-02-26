@@ -7,7 +7,8 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 var spawn_points: Array = []
 var spawn_dict: Dictionary = {
-	"EnemyFollowers": preload("res://Source/Enemies/EnemyFollowers.tscn")
+	"EnemyFollowers": preload("res://Source/Enemies/EnemyFollowers.tscn"),
+	"EnemyChasers": preload("res://Source/Enemies/EnemyChaser.tscn")
 }
 
 func _init() -> void:
