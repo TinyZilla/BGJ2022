@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Experiments/FPS_UI_Test/very_crappy_crosshair.png" type="Texture" id=1]
 [ext_resource path="res://Source/Objects/UI.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Source/Objects/UI/DiceFace.png" type="Texture" id=10]
 [ext_resource path="res://Source/Objects/UI/A_Block.png" type="Texture" id=11]
 [ext_resource path="res://Source/Objects/UI/TitleRect.gd" type="Script" id=12]
+[ext_resource path="res://Source/Fonts/Louis George Cafe Bold Italic.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Source/Objects/UI/EndScreen.gd" type="Script" id=14]
 
 [sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.0823529, 0.113725, 0.231373, 1 )
@@ -144,6 +146,39 @@ void fragment(){
 shader = SubResource( 12 )
 shader_param/blur_amount = 3.0
 
+[sub_resource type="ParticlesMaterial" id=28]
+lifetime_randomness = 0.58
+emission_shape = 2
+emission_box_extents = Vector3( 170, 170, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 96.23
+angular_velocity = 41.57
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 720.0
+angle_random = 1.0
+scale = 0.27
+scale_curve = SubResource( 21 )
+
+[sub_resource type="DynamicFont" id=26]
+size = 32
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=27]
+size = 32
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 13 )
+
 [sub_resource type="DynamicFont" id=13]
 size = 26
 outline_size = 6
@@ -156,6 +191,7 @@ font_data = ExtResource( 5 )
 script = ExtResource( 2 )
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 15 )
@@ -255,6 +291,7 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -265,14 +302,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="RetryButton" type="Button" parent="RetryMenu"]
-anchor_left = 0.518
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.518
+anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -89.432
-margin_top = 50.0
-margin_right = 88.568
-margin_bottom = 137.0
+margin_left = -145.5
+margin_top = 100.0
+margin_right = 145.5
+margin_bottom = 187.0
 text = "Retry From Checkpoint"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -282,9 +319,11 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+move_speed = 0.04
 
 [node name="BlurShader" type="ColorRect" parent="EndScreen"]
 material = SubResource( 11 )
@@ -294,25 +333,86 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="EndScreen"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -67.0
-margin_top = -75.0
-margin_right = 67.0
-margin_bottom = 75.0
+[node name="CenterContainer" type="CenterContainer" parent="EndScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParticlesAnchor" type="Control" parent="EndScreen/CenterContainer"]
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="RedDiceParticles" type="Particles2D" parent="EndScreen/CenterContainer/ParticlesAnchor"]
+position = Vector2( 0, 25 )
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 28 )
+texture = ExtResource( 8 )
+
+[node name="BlueDiceParticles" type="Particles2D" parent="EndScreen/CenterContainer/ParticlesAnchor"]
+position = Vector2( 0, 25 )
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 28 )
+texture = ExtResource( 9 )
+
+[node name="GreenDiceParticles2" type="Particles2D" parent="EndScreen/CenterContainer/ParticlesAnchor"]
+position = Vector2( 0, 25 )
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 28 )
+texture = ExtResource( 10 )
+
+[node name="ABlockParticles3" type="Particles2D" parent="EndScreen/CenterContainer/ParticlesAnchor"]
+position = Vector2( 0, 25 )
+amount = 16
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 28 )
+texture = ExtResource( 11 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/CenterContainer"]
+margin_left = 256.0
+margin_top = 131.0
+margin_right = 768.0
+margin_bottom = 468.0
+rect_min_size = Vector2( 512, 0 )
+custom_constants/separation = 12
+
+[node name="Label" type="Label" parent="EndScreen/CenterContainer/VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 177.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 4
+custom_fonts/font = SubResource( 26 )
 text = "End Reached!
 
 Thank You for Playing
 
-Credits:
-----
------
-----
------"
+Credits:"
 align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EndScreen/CenterContainer/VBoxContainer"]
+margin_top = 189.0
+margin_right = 512.0
+margin_bottom = 337.0
+rect_clip_content = false
+custom_fonts/normal_font = SubResource( 27 )
+bbcode_enabled = true
+bbcode_text = "[center]Azamix [rainbow](Models and Art)[/rainbow]
+Jiahui[tornado radius=1 freq=7](Music & SFX)[/tornado]
+Tinygodzilla [wave](Programming)[/wave]
+NekotoArts [shake rate=50 level=10](VFX)[/shake][/center]"
+text = "Azamix (Models and Art)
+Jiahui(Music & SFX)
+Tinygodzilla (Programming)
+NekotoArts (VFX)"
+fit_content_height = true
 
 [node name="HUD" type="Control" parent="."]
 visible = false
