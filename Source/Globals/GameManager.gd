@@ -180,10 +180,7 @@ func do_event() -> void:
 
 # Actually start the game.
 func start() -> void:
-
 	while current_index < event_list.size():
 		yield(do_event(), "completed")
 	
 	print("Out of Start Loop. Game done.")
-
-			
