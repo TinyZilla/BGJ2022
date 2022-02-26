@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://Experiments/JustBetterEnvironment/BetterEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://Source/Player/Player.tscn" type="PackedScene" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://Source/Objects/SpawnPoint.gd" type="Script" id=22]
 [ext_resource path="res://Experiments/PLZREMOVEEnemyContainer.gd" type="Script" id=23]
 [ext_resource path="res://Models/Skyboxes/FS013_Sunset.png" type="Texture" id=24]
+[ext_resource path="res://Models/AllModels/Saloon.scn" type="PackedScene" id=25]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 128, 0.2, 256 )
@@ -449,13 +450,11 @@ transform = Transform( 0.485725, 0, 0.874112, 0, 1, 0, -0.874112, 0, 0.485725, 1
 script = ExtResource( 19 )
 
 [node name="MeshInstance" type="MeshInstance" parent="WorldObjects/PermanentBlocks/WoodBlock"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 11 )
 skeleton = NodePath("../..")
 material/0 = SubResource( 6 )
 
 [node name="CollisionShape6" type="CollisionShape" parent="WorldObjects/PermanentBlocks/WoodBlock"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 19 )
 
 [node name="WoodBlock2" type="StaticBody" parent="WorldObjects/PermanentBlocks"]
@@ -624,5 +623,8 @@ script = ExtResource( 21 )
 transform = Transform( 3000, 0, 0, 0, 3000, 0, 0, 0, 3000, 0, 0, 0 )
 mesh = SubResource( 38 )
 material/0 = SubResource( 40 )
+
+[node name="Saloon" parent="." instance=ExtResource( 25 )]
+transform = Transform( 0.767635, 0, 0.640887, 0, 1, 0, -0.640887, 0, 0.767635, 0, 0, -77.3993 )
 
 [connection signal="player_active_changed" from="Player" to="UI" method="player_active_changed"]
