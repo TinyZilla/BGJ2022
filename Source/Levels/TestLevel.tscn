@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Textures/texture_13.png" type="Texture" id=1]
 [ext_resource path="res://Source/Player/Player.tscn" type="PackedScene" id=2]
@@ -12,8 +12,7 @@
 [ext_resource path="res://Source/Objects/SkyfallLocation.gd" type="Script" id=10]
 [ext_resource path="res://Experiments/PLZREMOVEEnemyContainer.gd" type="Script" id=11]
 [ext_resource path="res://Source/Objects/SkyfallBlock.gd" type="Script" id=12]
-[ext_resource path="res://Experiments/FPS_UI_Test/very_crappy_crosshair.png" type="Texture" id=13]
-[ext_resource path="res://Source/Objects/UI.gd" type="Script" id=14]
+[ext_resource path="res://Source/Objects/UI/UI.tscn" type="PackedScene" id=13]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 40, 0.5, 40 )
@@ -46,20 +45,6 @@ vertices = PoolVector3Array( -31.9, 0.4, -39.4, -39.4, 0.4, -39.4, -39.4, 0.4, -
 polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 7, 6, 8 ), PoolIntArray( 8, 6, 9 ), PoolIntArray( 11, 10, 12 ), PoolIntArray( 12, 10, 13 ), PoolIntArray( 13, 10, 14 ), PoolIntArray( 14, 10, 15 ), PoolIntArray( 17, 16, 18 ), PoolIntArray( 18, 16, 19 ), PoolIntArray( 21, 20, 22 ), PoolIntArray( 22, 20, 23 ), PoolIntArray( 26, 25, 24 ), PoolIntArray( 28, 27, 29 ), PoolIntArray( 29, 27, 30 ), PoolIntArray( 32, 31, 33 ), PoolIntArray( 33, 31, 34 ), PoolIntArray( 34, 31, 35 ), PoolIntArray( 35, 31, 36 ), PoolIntArray( 39, 38, 37 ), PoolIntArray( 42, 41, 40 ), PoolIntArray( 44, 43, 45 ), PoolIntArray( 45, 43, 46 ), PoolIntArray( 48, 47, 49 ), PoolIntArray( 49, 47, 52 ), PoolIntArray( 49, 52, 51 ), PoolIntArray( 49, 51, 50 ), PoolIntArray( 55, 54, 53 ), PoolIntArray( 59, 58, 56 ), PoolIntArray( 56, 58, 57 ), PoolIntArray( 62, 61, 60 ), PoolIntArray( 64, 63, 65 ), PoolIntArray( 65, 63, 66 ), PoolIntArray( 66, 63, 67 ), PoolIntArray( 67, 63, 68 ), PoolIntArray( 71, 70, 69 ), PoolIntArray( 73, 72, 74 ), PoolIntArray( 74, 72, 75 ), PoolIntArray( 77, 76, 78 ), PoolIntArray( 78, 76, 79 ), PoolIntArray( 81, 80, 82 ), PoolIntArray( 82, 80, 83 ), PoolIntArray( 85, 84, 86 ), PoolIntArray( 86, 84, 87 ), PoolIntArray( 87, 84, 88 ), PoolIntArray( 88, 84, 89 ), PoolIntArray( 93, 92, 90 ), PoolIntArray( 90, 92, 91 ), PoolIntArray( 97, 96, 94 ), PoolIntArray( 94, 96, 95 ), PoolIntArray( 101, 100, 98 ), PoolIntArray( 98, 100, 99 ), PoolIntArray( 105, 104, 102 ), PoolIntArray( 102, 104, 103 ), PoolIntArray( 109, 108, 106 ), PoolIntArray( 106, 108, 107 ), PoolIntArray( 113, 112, 110 ), PoolIntArray( 110, 112, 111 ), PoolIntArray( 117, 116, 114 ), PoolIntArray( 114, 116, 115 ), PoolIntArray( 121, 120, 118 ), PoolIntArray( 118, 120, 119 ), PoolIntArray( 125, 124, 122 ), PoolIntArray( 122, 124, 123 ), PoolIntArray( 126, 128, 127 ), PoolIntArray( 131, 130, 132 ), PoolIntArray( 132, 130, 129 ), PoolIntArray( 135, 134, 133 ), PoolIntArray( 137, 136, 138 ), PoolIntArray( 138, 136, 139 ), PoolIntArray( 139, 136, 140 ), PoolIntArray( 140, 136, 141 ), PoolIntArray( 143, 142, 144 ), PoolIntArray( 144, 142, 145 ), PoolIntArray( 145, 142, 147 ), PoolIntArray( 145, 147, 146 ), PoolIntArray( 150, 149, 148 ), PoolIntArray( 153, 152, 151 ), PoolIntArray( 155, 154, 156 ), PoolIntArray( 156, 154, 157 ), PoolIntArray( 160, 159, 158 ), PoolIntArray( 162, 161, 163 ), PoolIntArray( 163, 161, 164 ), PoolIntArray( 167, 166, 165 ), PoolIntArray( 169, 168, 170 ), PoolIntArray( 170, 168, 171 ), PoolIntArray( 173, 172, 174 ), PoolIntArray( 174, 172, 176 ), PoolIntArray( 174, 176, 175 ), PoolIntArray( 178, 177, 179 ), PoolIntArray( 179, 177, 180 ), PoolIntArray( 181, 184, 182 ), PoolIntArray( 182, 184, 183 ), PoolIntArray( 186, 185, 187 ), PoolIntArray( 187, 185, 189 ), PoolIntArray( 187, 189, 188 ), PoolIntArray( 193, 192, 190 ), PoolIntArray( 190, 192, 191 ), PoolIntArray( 195, 194, 196 ), PoolIntArray( 196, 194, 198 ), PoolIntArray( 196, 198, 197 ), PoolIntArray( 200, 199, 201 ), PoolIntArray( 201, 199, 202 ), PoolIntArray( 205, 204, 203 ), PoolIntArray( 207, 206, 208 ), PoolIntArray( 208, 206, 209 ), PoolIntArray( 209, 206, 210 ), PoolIntArray( 211, 213, 212 ), PoolIntArray( 216, 215, 217 ), PoolIntArray( 217, 215, 214 ), PoolIntArray( 219, 218, 220 ), PoolIntArray( 220, 218, 221 ), PoolIntArray( 224, 223, 222 ), PoolIntArray( 226, 225, 227 ), PoolIntArray( 227, 225, 228 ), PoolIntArray( 231, 230, 229 ), PoolIntArray( 236, 235, 237 ), PoolIntArray( 237, 235, 232 ), PoolIntArray( 232, 235, 234 ), PoolIntArray( 232, 234, 233 ), PoolIntArray( 240, 239, 238 ), PoolIntArray( 243, 242, 241 ), PoolIntArray( 245, 244, 246 ), PoolIntArray( 246, 244, 247 ), PoolIntArray( 249, 248, 250 ), PoolIntArray( 250, 248, 253 ), PoolIntArray( 250, 253, 252 ), PoolIntArray( 250, 252, 251 ), PoolIntArray( 255, 254, 256 ), PoolIntArray( 256, 254, 257 ), PoolIntArray( 259, 258, 260 ), PoolIntArray( 260, 258, 261 ), PoolIntArray( 264, 263, 262 ), PoolIntArray( 267, 266, 265 ), PoolIntArray( 268, 270, 269 ), PoolIntArray( 272, 271, 273 ), PoolIntArray( 273, 271, 276 ), PoolIntArray( 273, 276, 275 ), PoolIntArray( 273, 275, 274 ) ]
 geometry/source_geometry_mode = 1
 geometry/source_group_name = "World"
-
-[sub_resource type="Shader" id=10]
-code = "shader_type canvas_item;
-
-uniform float blur_amount = 3.0;
-
-void fragment(){
-	COLOR.rgb = texture(SCREEN_TEXTURE, SCREEN_UV, blur_amount).rgb;
-}
-"
-
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 10 )
-shader_param/blur_amount = 3.0
 
 [node name="TestLevel" type="Spatial"]
 script = ExtResource( 9 )
@@ -291,138 +276,7 @@ environment = ExtResource( 5 )
 
 [node name="=========== UI ============" type="Node" parent="."]
 
-[node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource( 14 )
-
-[node name="MainMenu" type="Control" parent="UI"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BlurShader" type="ColorRect" parent="UI/MainMenu"]
-material = SubResource( 11 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="StartGame" type="Button" parent="UI/MainMenu"]
-anchor_left = 0.518
-anchor_top = 0.5
-anchor_right = 0.518
-anchor_bottom = 0.5
-margin_left = -41.432
-margin_top = 134.0
-margin_right = 41.568
-margin_bottom = 154.0
-text = "Start Game"
-
-[node name="ColorRect" type="ColorRect" parent="UI/MainMenu"]
-anchor_left = 0.521
-anchor_top = 0.5
-anchor_right = 0.521
-anchor_bottom = 0.5
-margin_left = -278.504
-margin_top = -137.0
-margin_right = 278.496
-margin_bottom = 75.0
-color = Color( 0.168627, 0.505882, 0.247059, 1 )
-
-[node name="RetryMenu" type="Control" parent="UI"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BlurShader" type="ColorRect" parent="UI/RetryMenu"]
-material = SubResource( 11 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="RetryButton" type="Button" parent="UI/RetryMenu"]
-anchor_left = 0.518
-anchor_top = 0.5
-anchor_right = 0.518
-anchor_bottom = 0.5
-margin_left = -89.432
-margin_top = 50.0
-margin_right = 88.568
-margin_bottom = 137.0
-text = "Retry From Checkpoint"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EndScreen" type="Control" parent="UI"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BlurShader" type="ColorRect" parent="UI/EndScreen"]
-material = SubResource( 11 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="UI/EndScreen"]
-margin_left = 481.0
-margin_top = 209.0
-margin_right = 566.0
-margin_bottom = 223.0
-text = "End Reached!
-
-Thank You for Playing
-
-Credits:
-----
------
-----
------"
-align = 1
-
-[node name="HUD" type="Control" parent="UI"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CrosshairControl" type="Control" parent="UI/HUD"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CenterContainer" type="CenterContainer" parent="UI/HUD/CrosshairControl"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CrosshairTexture" type="TextureRect" parent="UI/HUD/CrosshairControl/CenterContainer"]
-margin_left = 496.0
-margin_top = 284.0
-margin_right = 528.0
-margin_bottom = 316.0
-rect_min_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 13 )
-expand = true
-stretch_mode = 6
+[node name="UI" parent="." instance=ExtResource( 13 )]
 
 [node name="========= Entities ==========" type="Node" parent="."]
 
@@ -431,7 +285,3 @@ transform = Transform( -0.0373762, 0, -0.999301, 0, 1, 0, 0.999301, 0, -0.037376
 
 [node name="EnemyContainer" type="Spatial" parent="."]
 script = ExtResource( 11 )
-
-[connection signal="pressed" from="UI/MainMenu/StartGame" to="UI" method="_on_StartGame_pressed"]
-[connection signal="pressed" from="UI/RetryMenu/RetryButton" to="UI" method="_on_RetryButton_pressed"]
-[connection signal="player_active_changed" from="Player" to="UI" method="player_active_changed"]
