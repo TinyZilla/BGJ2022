@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Experiments/FPS_UI_Test/very_crappy_crosshair.png" type="Texture" id=1]
 [ext_resource path="res://Source/Objects/UI.gd" type="Script" id=2]
@@ -6,6 +6,129 @@
 [ext_resource path="res://Source/Objects/UI/Healthbar_Empty.png" type="Texture" id=4]
 [ext_resource path="res://Source/Fonts/Kids Magazine.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Source/Objects/UI/Healthbar.gd" type="Script" id=6]
+[ext_resource path="res://Source/Fonts/SERIO___.TTF" type="DynamicFontData" id=7]
+[ext_resource path="res://Source/Objects/UI/DiceFace2.png" type="Texture" id=8]
+[ext_resource path="res://Source/Objects/UI/DiceFace3.png" type="Texture" id=9]
+[ext_resource path="res://Source/Objects/UI/DiceFace.png" type="Texture" id=10]
+[ext_resource path="res://Source/Objects/UI/A_Block.png" type="Texture" id=11]
+[ext_resource path="res://Source/Objects/UI/TitleRect.gd" type="Script" id=12]
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.0823529, 0.113725, 0.231373, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 14.0
+expand_margin_right = 14.0
+expand_margin_top = 14.0
+expand_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.0823529, 0.113725, 0.231373, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 14.0
+expand_margin_right = 14.0
+expand_margin_top = 14.0
+expand_margin_bottom = 14.0
+
+[sub_resource type="DynamicFont" id=14]
+size = 24
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
+
+[sub_resource type="Theme" id=15]
+default_font = SubResource( 14 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 1, 1, 1, 1 )
+Button/colors/font_color_focus = Color( 1, 1, 1, 1 )
+Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 0
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource( 18 )
+Button/styles/normal = SubResource( 16 )
+Button/styles/pressed = SubResource( 16 )
+
+[sub_resource type="Shader" id=22]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise;
+
+uniform float blur_amount = 3.0;
+uniform float noise_speed = 0.1;
+uniform float noise_scale = 1.0;
+uniform float noise_strength = 0.02;
+
+void fragment(){
+	float n = texture(noise, UV * noise_scale + TIME * noise_speed).r;
+	
+	COLOR.rgb = texture(SCREEN_TEXTURE, SCREEN_UV + n * noise_strength, blur_amount).rgb;
+}
+"
+
+[sub_resource type="OpenSimplexNoise" id=24]
+octaves = 2
+
+[sub_resource type="NoiseTexture" id=25]
+seamless = true
+noise = SubResource( 24 )
+
+[sub_resource type="ShaderMaterial" id=23]
+shader = SubResource( 22 )
+shader_param/blur_amount = 3.0
+shader_param/noise_speed = 0.1
+shader_param/noise_scale = 1.0
+shader_param/noise_strength = 0.02
+shader_param/noise = SubResource( 25 )
+
+[sub_resource type="Curve" id=20]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.130435, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.603261, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=21]
+curve = SubResource( 20 )
+
+[sub_resource type="ParticlesMaterial" id=19]
+emission_shape = 2
+emission_box_extents = Vector3( 170, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 96.23
+angular_velocity = 41.57
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 720.0
+angle_random = 1.0
+scale = 0.27
+scale_curve = SubResource( 21 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 54
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
 
 [sub_resource type="Shader" id=12]
 code = "shader_type canvas_item;
@@ -33,39 +156,100 @@ font_data = ExtResource( 5 )
 script = ExtResource( 2 )
 
 [node name="MainMenu" type="Control" parent="."]
-visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlurShader" type="ColorRect" parent="MainMenu"]
+material = SubResource( 23 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BlurShader" type="ColorRect" parent="MainMenu"]
-material = SubResource( 11 )
+[node name="StartGame" type="Button" parent="MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = 150.0
+margin_right = 75.0
+margin_bottom = 181.0
+text = "Start Game"
+
+[node name="TitleRect" type="ColorRect" parent="MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -278.5
+margin_top = -200.0
+margin_right = 278.5
+margin_bottom = 12.0
+color = Color( 0, 0, 0, 0.25098 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu/TitleRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="StartGame" type="Button" parent="MainMenu"]
-anchor_left = 0.518
-anchor_top = 0.5
-anchor_right = 0.518
-anchor_bottom = 0.5
-margin_left = -41.432
-margin_top = 134.0
-margin_right = 41.568
-margin_bottom = 154.0
-text = "Start Game"
+[node name="ParticlesAnchor" type="Control" parent="MainMenu/TitleRect/CenterContainer"]
+margin_left = 278.0
+margin_top = 106.0
+margin_right = 278.0
+margin_bottom = 106.0
 
-[node name="ColorRect" type="ColorRect" parent="MainMenu"]
-anchor_left = 0.521
-anchor_top = 0.5
-anchor_right = 0.521
-anchor_bottom = 0.5
-margin_left = -278.504
-margin_top = -137.0
-margin_right = 278.496
-margin_bottom = 75.0
-color = Color( 0.168627, 0.505882, 0.247059, 1 )
+[node name="RedDiceParticles" type="Particles2D" parent="MainMenu/TitleRect/CenterContainer/ParticlesAnchor"]
+position = Vector2( 0, 25 )
+amount = 4
+lifetime = 2.0
+process_material = SubResource( 19 )
+texture = ExtResource( 8 )
+
+[node name="BlueDiceParticles" type="Particles2D" parent="MainMenu/TitleRect/CenterContainer/ParticlesAnchor"]
+position = Vector2( 0, 25 )
+amount = 4
+lifetime = 2.0
+process_material = SubResource( 19 )
+texture = ExtResource( 9 )
+
+[node name="GreenDiceParticles2" type="Particles2D" parent="MainMenu/TitleRect/CenterContainer/ParticlesAnchor"]
+position = Vector2( 0, 25 )
+amount = 4
+lifetime = 2.0
+process_material = SubResource( 19 )
+texture = ExtResource( 10 )
+
+[node name="ABlockParticles3" type="Particles2D" parent="MainMenu/TitleRect/CenterContainer/ParticlesAnchor"]
+position = Vector2( 0, 25 )
+amount = 4
+lifetime = 2.0
+process_material = SubResource( 19 )
+texture = ExtResource( 11 )
+
+[node name="Title" type="Label" parent="MainMenu/TitleRect/CenterContainer"]
+margin_left = 87.0
+margin_top = 78.0
+margin_right = 470.0
+margin_bottom = 133.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 17 )
+text = "Bruh its 2 AM"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RetryMenu" type="Control" parent="."]
 visible = false
