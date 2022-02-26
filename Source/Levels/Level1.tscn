@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Experiments/JustBetterEnvironment/BetterEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://Source/Player/Player.tscn" type="PackedScene" id=2]
@@ -20,6 +20,9 @@
 [ext_resource path="res://Source/Objects/EnemyObjective/EnemyObjective.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Source/Objects/SkyfallBlock.gd" type="Script" id=19]
 [ext_resource path="res://Source/Objects/UI/UI.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Source/Objects/SkyfallLocation.gd" type="Script" id=21]
+[ext_resource path="res://Source/Objects/SpawnPoint.gd" type="Script" id=22]
+[ext_resource path="res://Experiments/PLZREMOVEEnemyContainer.gd" type="Script" id=23]
 
 [sub_resource type="Shader" id=30]
 code = "/*
@@ -487,12 +490,37 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 16.1768, 1.90735e-06, -62.7183
 [node name="EnemyObjective2" parent="Objectives" instance=ExtResource( 18 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -19.6294, 1.90735e-06, 25.3578 )
 
+[node name="EnemyObjective3" parent="Objectives" instance=ExtResource( 18 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -49.0184, 1.90735e-06, -25.5427 )
+group = "objective_stage_2"
+
+[node name="EnemyObjective4" parent="Objectives" instance=ExtResource( 18 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 39.7599, 1.90735e-06, 27.121 )
+group = "objective_stage_2"
+
+[node name="SpawnPosition" type="Spatial" parent="."]
+
+[node name="SpawnPosition" type="Position3D" parent="SpawnPosition"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -49.9338, 1.77041, -112.838 )
+script = ExtResource( 22 )
+
+[node name="SpawnPosition2" type="Position3D" parent="SpawnPosition"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18614, 1.77041, -114.015 )
+script = ExtResource( 22 )
+
+[node name="SpawnPosition3" type="Position3D" parent="SpawnPosition"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.5417, 1.77041, -115.035 )
+script = ExtResource( 22 )
+
+[node name="EnemyContainer" type="Spatial" parent="."]
+script = ExtResource( 23 )
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.786461, 0.61764, 0, -0.61764, 0.786461, 0, 11.4925, 0 )
 shadow_enabled = true
 
 [node name="OverheadCamera" type="Camera" parent="."]
-transform = Transform( 0.00727253, 0.977956, -0.208686, 0, 0.208692, 0.977982, 0.999974, -0.0071124, 0.00151772, -40.6727, 128.406, 0.350785 )
+transform = Transform( 0.00282465, 0.913218, -0.407461, 0, 0.407463, 0.913222, 0.999996, -0.00257953, 0.00115094, -76.1298, 137.685, 1.95156 )
 far = 8192.0
 script = ExtResource( 17 )
 
@@ -505,3 +533,9 @@ visible = false
 [node name="Level2NavMesh" parent="Navigation" instance=ExtResource( 15 )]
 
 [node name="UI" parent="." instance=ExtResource( 20 )]
+
+[node name="SkyfallLocation" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0 )
+script = ExtResource( 21 )
+
+[connection signal="player_active_changed" from="Player" to="UI" method="player_active_changed"]
