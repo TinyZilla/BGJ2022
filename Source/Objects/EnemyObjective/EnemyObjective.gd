@@ -8,6 +8,9 @@ const death_vfx = preload("res://Source/VFX/EnemyDeathVFX.tscn")
 
 var is_alive: bool = false
 
+export(float) var MAX_HEALTH = 20.0
+var health : float = MAX_HEALTH
+
 func _enter_tree() -> void:
 	fall_location = global_transform.origin
 	add_to_group(group)
@@ -29,3 +32,11 @@ func _ready() -> void:
 func add_to_objective() -> void:
 	EnemyObjectiveList.objective_added(fall_location)
 	is_alive = true
+	health = MAX_HEALTH
+
+func hurt(damage: float) -> void:
+	health -= damage
+	health = clamp(health, 0.0, MAX_HEALTH)
+	
+	if is_zero_approx(health):
+		destoryed()

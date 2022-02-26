@@ -31,9 +31,8 @@ func objective_added(location: Vector3) -> void:
 func objective_died() -> void:
 	print("Next Obj")
 	objective_list.pop_front()
-	emit_signal("objective_updated", get_current_objective())
 
-# For testing.
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_focus_next"):
-		objective_died()
+	if objective_list.empty():
+		WaveManager.terminate_wave_early()
+
+	emit_signal("objective_updated", get_current_objective())
