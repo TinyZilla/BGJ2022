@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Experiments/FPS_UI_Test/very_crappy_crosshair.png" type="Texture" id=1]
 [ext_resource path="res://Source/Objects/UI.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Source/Objects/UI/TitleRect.gd" type="Script" id=12]
 [ext_resource path="res://Source/Fonts/Louis George Cafe Bold Italic.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Source/Objects/UI/EndScreen.gd" type="Script" id=14]
+[ext_resource path="res://Source/Objects/UI/Crappy_Flag_Centered.png" type="Texture" id=15]
 
 [sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.0823529, 0.113725, 0.231373, 1 )
@@ -288,7 +289,6 @@ __meta__ = {
 }
 
 [node name="RetryMenu" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 15 )
@@ -311,6 +311,20 @@ margin_top = 100.0
 margin_right = 145.5
 margin_bottom = 187.0
 text = "Retry From Checkpoint"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlagTexture" type="TextureRect" parent="RetryMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -192.5
+margin_top = 40.0
+margin_right = 192.5
+margin_bottom = 390.0
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
