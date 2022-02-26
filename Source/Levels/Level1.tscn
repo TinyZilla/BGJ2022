@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Experiments/JustBetterEnvironment/BetterEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://Source/Player/Player.tscn" type="PackedScene" id=2]
@@ -25,6 +25,9 @@
 [ext_resource path="res://Experiments/PLZREMOVEEnemyContainer.gd" type="Script" id=23]
 [ext_resource path="res://Models/Skyboxes/FS013_Sunset.png" type="Texture" id=24]
 [ext_resource path="res://Models/AllModels/Saloon.scn" type="PackedScene" id=25]
+[ext_resource path="res://Textures/texture_01.png" type="Texture" id=26]
+[ext_resource path="res://Source/Props/RingStacker.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Source/Props/CrayonBox.tscn" type="PackedScene" id=28]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 128, 0.2, 256 )
@@ -330,6 +333,16 @@ shader_param/tex_mip_level = 0.5
 shader_param/hdri = ExtResource( 24 )
 shader_param/noise_texture = SubResource( 42 )
 
+[sub_resource type="BoxShape" id=45]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="CubeMesh" id=46]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=47]
+albedo_texture = ExtResource( 26 )
+uv1_triplanar = true
+
 [node name="Level1" type="Spatial"]
 script = ExtResource( 16 )
 
@@ -626,5 +639,26 @@ material/0 = SubResource( 40 )
 
 [node name="Saloon" parent="." instance=ExtResource( 25 )]
 transform = Transform( 0.767635, 0, 0.640887, 0, 1, 0, -0.640887, 0, 0.767635, 0, 0, -77.3993 )
+
+[node name="RingStacker2" parent="." instance=ExtResource( 27 )]
+transform = Transform( 0.782271, 0, -0.622938, 0, 1, 0, 0.622938, 0, 0.782271, -28.8687, 0, 25.035 )
+group = "stage2"
+
+[node name="CrayonBox" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1.17856, 0.927901, 4.05598e-08, 0, -6.55671e-08, 1.5, 0.927901, -1.17856, -5.15164e-08, -26.9282, 1.21267, 22.4122 )
+group = "stage2"
+
+[node name="Cube" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10892, 12.8946, 0 )
+visible = false
+script = ExtResource( 19 )
+group = "-"
+
+[node name="CollisionShape" type="CollisionShape" parent="Cube"]
+shape = SubResource( 45 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Cube"]
+mesh = SubResource( 46 )
+material/0 = SubResource( 47 )
 
 [connection signal="player_active_changed" from="Player" to="UI" method="player_active_changed"]

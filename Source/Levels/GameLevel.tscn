@@ -1,8 +1,8 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Textures/Wood048_1K-JPG/Wood048_1K_Roughness.jpg" type="Texture" id=1]
 [ext_resource path="res://Source/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Textures/texture_01.png" type="Texture" id=3]
+[ext_resource path="res://Source/Levels/NavMeshes/navmesh-stage2.tres" type="NavigationMesh" id=3]
 [ext_resource path="res://Source/Objects/Nav.gd" type="Script" id=4]
 [ext_resource path="res://Experiments/JustBetterEnvironment/BetterEnvironment.tres" type="Environment" id=5]
 [ext_resource path="res://Source/Objects/SpawnPoint.gd" type="Script" id=6]
@@ -26,7 +26,8 @@
 [ext_resource path="res://Textures/Wood048_1K-JPG/Wood048_1K_Color.jpg" type="Texture" id=24]
 [ext_resource path="res://Textures/Wood048_1K-JPG/Wood048_1K_NormalGL.jpg" type="Texture" id=25]
 [ext_resource path="res://Textures/Wood048_1K-JPG/Wood048_1K_Displacement.jpg" type="Texture" id=26]
-[ext_resource path="res://Source/Levels/NavMeshes/navmesh-default.tres" type="NavigationMesh" id=27]
+[ext_resource path="res://Models/AllModels/BuildingBrick2.scn" type="PackedScene" id=27]
+[ext_resource path="res://Models/AllModels/BuildingBrick1.scn" type="PackedScene" id=28]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 75, 0.5, 40 )
@@ -63,21 +64,164 @@ albedo_color = Color( 0.745098, 0.745098, 0.745098, 1 )
 metallic = 0.669291
 roughness = 0.350394
 
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 0.5, 0.5, 0.5 )
+[sub_resource type="SpatialMaterial" id=16]
+resource_name = "RocketFin"
+params_cull_mode = 2
+albedo_color = Color( 0, 0.290196, 0.662745, 1 )
+roughness = 0.5
 
-[sub_resource type="CubeMesh" id=7]
-size = Vector3( 1, 1, 1 )
+[sub_resource type="ConvexPolygonShape" id=17]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.22083, 1.13477, -0.98845, -0.156226, 1.13477, -1.14468, 0, 1.13477, -1.20899, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.22083, 1.13477, 0.999902, 0.156128, 1.13477, -1.14468, 0.220732, 1.13477, -0.98845, 0.5, 0.999918, 1.5, 0, 1.13477, 1.22044, -0.156226, 1.13477, 1.15525, 0.220732, 1.13477, 0.999902, 0.156128, 1.13477, 1.15525 )
 
-[sub_resource type="SpatialMaterial" id=8]
-albedo_texture = ExtResource( 3 )
-uv1_triplanar = true
+[sub_resource type="ConvexPolygonShape" id=18]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.22083, 1.13477, -0.98845, -0.156226, 1.13477, -1.14468, 0, 1.13477, -1.20899, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.22083, 1.13477, 0.999902, 0.156128, 1.13477, -1.14468, 0.220732, 1.13477, -0.98845, 0.5, 0.999918, 1.5, 0, 1.13477, 1.22044, -0.156226, 1.13477, 1.15525, 0.220732, 1.13477, 0.999902, 0.156128, 1.13477, 1.15525 )
+
+[sub_resource type="SpatialMaterial" id=19]
+resource_name = "RocketFin"
+params_cull_mode = 2
+albedo_color = Color( 0.686275, 0.705882, 0, 1 )
+roughness = 0.5
+
+[sub_resource type="ConvexPolygonShape" id=20]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.22083, 1.13477, -0.98845, -0.156226, 1.13477, -1.14468, 0, 1.13477, -1.20899, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.22083, 1.13477, 0.999902, 0.156128, 1.13477, -1.14468, 0.220732, 1.13477, -0.98845, 0.5, 0.999918, 1.5, 0, 1.13477, 1.22044, -0.156226, 1.13477, 1.15525, 0.220732, 1.13477, 0.999902, 0.156128, 1.13477, 1.15525 )
+
+[sub_resource type="ConvexPolygonShape" id=21]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.22083, 1.13477, -0.98845, -0.156226, 1.13477, -1.14468, 0, 1.13477, -1.20899, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.22083, 1.13477, 0.999902, 0.156128, 1.13477, -1.14468, 0.220732, 1.13477, -0.98845, 0.5, 0.999918, 1.5, 0, 1.13477, 1.22044, -0.156226, 1.13477, 1.15525, 0.220732, 1.13477, 0.999902, 0.156128, 1.13477, 1.15525 )
+
+[sub_resource type="ConvexPolygonShape" id=22]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.22083, 1.13477, -0.98845, -0.156226, 1.13477, -1.14468, 0, 1.13477, -1.20899, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.22083, 1.13477, 0.999902, 0.156128, 1.13477, -1.14468, 0.220732, 1.13477, -0.98845, 0.5, 0.999918, 1.5, 0, 1.13477, 1.22044, -0.156226, 1.13477, 1.15525, 0.220732, 1.13477, 0.999902, 0.156128, 1.13477, 1.15525 )
+
+[sub_resource type="ConvexPolygonShape" id=23]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.22083, 1.13477, -0.98845, -0.156226, 1.13477, -1.14468, 0, 1.13477, -1.20899, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.22083, 1.13477, 0.999902, 0.156128, 1.13477, -1.14468, 0.220732, 1.13477, -0.98845, 0.5, 0.999918, 1.5, 0, 1.13477, 1.22044, -0.156226, 1.13477, 1.15525, 0.220732, 1.13477, 0.999902, 0.156128, 1.13477, 1.15525 )
+
+[sub_resource type="ConvexPolygonShape" id=24]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="ConvexPolygonShape" id=25]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="ConvexPolygonShape" id=26]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="ConvexPolygonShape" id=27]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="ConvexPolygonShape" id=28]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="ConvexPolygonShape" id=29]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.22083, 1.13477, -0.98845, -0.156226, 1.13477, -1.14468, 0, 1.13477, -1.20899, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.22083, 1.13477, 0.999902, 0.156128, 1.13477, -1.14468, 0.220732, 1.13477, -0.98845, 0.5, 0.999918, 1.5, 0, 1.13477, 1.22044, -0.156226, 1.13477, 1.15525, 0.220732, 1.13477, 0.999902, 0.156128, 1.13477, 1.15525 )
+
+[sub_resource type="ConvexPolygonShape" id=30]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.22083, 1.13477, -0.98845, -0.156226, 1.13477, -1.14468, 0, 1.13477, -1.20899, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.22083, 1.13477, 0.999902, 0.156128, 1.13477, -1.14468, 0.220732, 1.13477, -0.98845, 0.5, 0.999918, 1.5, 0, 1.13477, 1.22044, -0.156226, 1.13477, 1.15525, 0.220732, 1.13477, 0.999902, 0.156128, 1.13477, 1.15525 )
+
+[sub_resource type="ConvexPolygonShape" id=31]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="ConvexPolygonShape" id=32]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="ConvexPolygonShape" id=33]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="ConvexPolygonShape" id=34]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="ConvexPolygonShape" id=35]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="SpatialMaterial" id=36]
+resource_name = "RocketFin"
+params_cull_mode = 2
+albedo_color = Color( 0, 0.431373, 0.00784314, 1 )
+roughness = 0.5
+
+[sub_resource type="ConvexPolygonShape" id=37]
+points = PoolVector3Array( -0.5, 0, -1.5, -0.5, 0.999918, -1.5, 0.5, 0, -1.5, -0.5, 0, 1.5, -0.342796, 1.13477, -1.06157, -0.300803, 1.13477, -1.23953, -0.19998, 1.13477, -1.31265, 0.5, 0.999918, -1.5, -0.5, 0.999918, 1.5, 0.5, 0, 1.5, -0.342796, 1.13477, 1.18726, 0.228465, 1.13477, -1.31265, 0.329287, 1.13477, -1.23953, 0.37128, 1.13477, -1.06157, 0.5, 0.999918, 1.5, -0.19998, 1.13477, 1.43745, -0.300803, 1.13477, 1.36404, 0.37128, 1.13477, 1.18726, 0.329287, 1.13477, 1.36404, 0.228465, 1.13477, 1.43745 )
+
+[sub_resource type="SpatialMaterial" id=38]
+resource_name = "RocketBody"
+params_cull_mode = 2
+albedo_color = Color( 0.792157, 0, 0.796078, 1 )
+metallic = 0.669291
+roughness = 0.350394
+
+[sub_resource type="SpatialMaterial" id=39]
+resource_name = "Toon.006"
+params_cull_mode = 2
+albedo_color = Color( 0, 0.301961, 0.0666667, 1 )
+roughness = 0.4
+
+[sub_resource type="SpatialMaterial" id=40]
+resource_name = "PaperWrapping"
+params_cull_mode = 2
+albedo_color = Color( 0, 0.584314, 0.133333, 1 )
+roughness = 0.8
+
+[sub_resource type="SpatialMaterial" id=41]
+resource_name = "BookBinding"
+params_cull_mode = 2
+albedo_color = Color( 0, 0, 0, 1 )
+metallic = 0.9
+roughness = 0.641732
+
+[sub_resource type="SpatialMaterial" id=42]
+resource_name = "Toon.006"
+params_cull_mode = 2
+albedo_color = Color( 1, 0.0196078, 0.0196078, 1 )
+roughness = 0.4
+
+[sub_resource type="SpatialMaterial" id=43]
+resource_name = "PaperWrapping"
+params_cull_mode = 2
+albedo_color = Color( 0.831373, 0, 0, 1 )
+roughness = 0.8
+
+[sub_resource type="SpatialMaterial" id=44]
+resource_name = "Toon.006"
+params_cull_mode = 2
+albedo_color = Color( 1, 0.960784, 0.0196078, 1 )
+roughness = 0.4
+
+[sub_resource type="SpatialMaterial" id=45]
+resource_name = "PaperWrapping"
+params_cull_mode = 2
+albedo_color = Color( 0.772549, 0.670588, 0, 1 )
+roughness = 0.8
+
+[sub_resource type="SpatialMaterial" id=46]
+resource_name = "Toon.006"
+params_cull_mode = 2
+albedo_color = Color( 0.403922, 0.403922, 0.403922, 1 )
+roughness = 0.4
+
+[sub_resource type="SpatialMaterial" id=47]
+resource_name = "PaperWrapping"
+params_cull_mode = 2
+albedo_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+roughness = 0.8
+
+[sub_resource type="SpatialMaterial" id=48]
+resource_name = "Toon.006"
+params_cull_mode = 2
+albedo_color = Color( 0, 0.929412, 1, 1 )
+roughness = 0.4
+
+[sub_resource type="SpatialMaterial" id=49]
+resource_name = "PaperWrapping"
+params_cull_mode = 2
+albedo_color = Color( 0, 0.505882, 0.619608, 1 )
+roughness = 0.8
 
 [sub_resource type="BoxShape" id=12]
 extents = Vector3( 75, 10, 0.5 )
 
 [sub_resource type="BoxShape" id=13]
 extents = Vector3( 0.5, 10, 40 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0.341176, 0.721569, 1, 1 )
+uv1_triplanar = true
 
 [node name="GameLevel" type="Spatial"]
 script = ExtResource( 9 )
@@ -129,12 +273,6 @@ transform = Transform( 1.80448, 0, 2.39663, 0, 3, 0, -2.39663, 0, 1.80448, -3.89
 [node name="Book" parent="World" instance=ExtResource( 21 )]
 transform = Transform( 0.743564, 0.531385, -0.405886, -0.00716768, 0.613308, 0.789811, 0.668627, -0.584365, 0.459842, 0.257986, 6.17979, 9.74383 )
 
-[node name="RingStacker2" parent="World" instance=ExtResource( 17 )]
-transform = Transform( 0.782271, 0, -0.622938, 0, 1, 0, 0.622938, 0, 0.782271, -28.8687, 0, 25.035 )
-
-[node name="CrayonBox" parent="World" instance=ExtResource( 23 )]
-transform = Transform( 1.17856, 0.927901, 4.05598e-08, 0, -6.55671e-08, 1.5, 0.927901, -1.17856, -5.15164e-08, -26.9282, 1.21267, 22.4122 )
-
 [node name="Saloon2" parent="World" instance=ExtResource( 16 )]
 transform = Transform( 0.840113, 0.258942, 0.476613, 0, -0.878692, 0.477389, 0.542412, -0.40106, -0.7382, 29.6178, 6.213, -3.97729 )
 
@@ -149,23 +287,303 @@ material/4 = SubResource( 11 )
 transform = Transform( -2.80492e-08, -0.641691, -0.766964, 1, -4.37114e-08, 0, -3.3525e-08, -0.766964, 0.641691, 30.8943, 2.03563, 2.54239 )
 
 [node name="Crayon" parent="World" instance=ExtResource( 22 )]
-transform = Transform( 0.929029, 0.370006, -1.61735e-08, 0, -4.37114e-08, -1, -0.370006, 0.929029, -4.06092e-08, 26.9698, 0.0646296, -1.40475 )
+transform = Transform( 0.929029, 0.370006, -1.61735e-08, 0, -4.37114e-08, -1, -0.370006, 0.929029, -4.06092e-08, 26.9698, 0.268368, -1.40475 )
+
+[node name="WoodenCar3" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 0.948229, 0, -0.317586, 0, 1, 0, 0.317586, 0, 0.948229, -58.2663, 0.00860161, -23.35 )
+
+[node name="WoodenCar4" parent="World" instance=ExtResource( 19 )]
+transform = Transform( -0.965199, 0, -0.261515, 0, 1, 0, 0.261515, 0, -0.965199, -57.6073, 0.00860161, 1.25744 )
+
+[node name="WoodenCar5" parent="World" instance=ExtResource( 19 )]
+transform = Transform( -0.999961, 0.00340551, -0.00806737, -0.00802255, 0.012982, 0.999883, 0.00350984, 0.99991, -0.0129541, -59.041, 2.57422, 25.0508 )
+
+[node name="BrickStack1" type="StaticBody" parent="World"]
+transform = Transform( 0.939549, 0, 0.342414, 0, 1, 0, -0.342414, 0, 0.939549, -35.8409, 0, -2.48995 )
+script = ExtResource( 12 )
+
+[node name="BuildingBrick1" parent="World/BrickStack1" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 0, -2.04209 )
+material/0 = SubResource( 16 )
+
+[node name="CollisionShape" type="CollisionShape" parent="World/BrickStack1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 0, -2.04209 )
+shape = SubResource( 17 )
+
+[node name="BuildingBrick2" parent="World/BrickStack1" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 0, -5.04209 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="World/BrickStack1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 0, -5.04209 )
+shape = SubResource( 18 )
+
+[node name="BuildingBrick5" parent="World/BrickStack1" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 1, -6.04209 )
+material/0 = SubResource( 19 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="World/BrickStack1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 1, -6.04209 )
+shape = SubResource( 20 )
+
+[node name="BuildingBrick6" parent="World/BrickStack1" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 2, -4.04209 )
+material/0 = SubResource( 16 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="World/BrickStack1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 2, -4.04209 )
+shape = SubResource( 21 )
+
+[node name="BuildingBrick4" parent="World/BrickStack1" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 0, -8.04209 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="World/BrickStack1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 0, -8.04209 )
+shape = SubResource( 22 )
+
+[node name="BuildingBrick3" parent="World/BrickStack1" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 1, -3.04209 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="World/BrickStack1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71765, 1, -3.04209 )
+shape = SubResource( 23 )
+
+[node name="BrickStack2" type="StaticBody" parent="World"]
+transform = Transform( 0.757212, 0, -0.65317, 0, 1, 0, 0.65317, 0, 0.757212, -39.7878, 0, 14.2614 )
+script = ExtResource( 12 )
+
+[node name="BuildingBrick2" parent="World/BrickStack2" instance=ExtResource( 27 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="World/BrickStack2"]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 24 )
+
+[node name="BuildingBrick3" parent="World/BrickStack2" instance=ExtResource( 27 )]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+material/0 = SubResource( 19 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="World/BrickStack2"]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+shape = SubResource( 25 )
+
+[node name="BuildingBrick4" parent="World/BrickStack2" instance=ExtResource( 27 )]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 1.75341, 0, 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="World/BrickStack2"]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 1.75341, 0, 2 )
+shape = SubResource( 26 )
+
+[node name="BuildingBrick5" parent="World/BrickStack2" instance=ExtResource( 27 )]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0.860149, 1, 2 )
+material/0 = SubResource( 16 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="World/BrickStack2"]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0.860149, 1, 2 )
+shape = SubResource( 27 )
+
+[node name="BuildingBrick6" parent="World/BrickStack2" instance=ExtResource( 27 )]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0.860149, 1, -1 )
+material/0 = SubResource( 19 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="World/BrickStack2"]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0.860149, 1, -1 )
+shape = SubResource( 28 )
 
 [node name="========== BASE LEVEL END =======" type="Node" parent="World"]
 
-[node name="Cube" type="StaticBody" parent="World"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10892, 0, 0 )
+[node name="RingStacker2" parent="World" instance=ExtResource( 17 )]
+transform = Transform( 0.782271, 0, -0.622938, 0, 1, 0, 0.622938, 0, 0.782271, -28.8687, 0, 25.035 )
+group = "stage2"
+
+[node name="CrayonBox" parent="World" instance=ExtResource( 23 )]
+transform = Transform( 1.17856, 0.927901, 4.05598e-08, 0, -6.55671e-08, 1.5, 0.927901, -1.17856, -5.15164e-08, -26.9282, 1.21267, 22.4122 )
+group = "stage2"
+
+[node name="DiceStackThree3" parent="World" instance=ExtResource( 18 )]
+transform = Transform( 0.19473, 0, 0.980857, 0, 1, 0, -0.980857, 0, 0.19473, 12.2525, 0, -25.6205 )
+group = "stage2"
+
+[node name="DiceStackThree4" parent="World" instance=ExtResource( 18 )]
+transform = Transform( -0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, -0.85223, -8.59543, 0, 11.3273 )
+group = "stage2"
+
+[node name="DiceStackThree5" parent="World" instance=ExtResource( 18 )]
+transform = Transform( 0.999383, 0, -0.0351259, 0, 1, 0, 0.0351259, 0, 0.999383, 40.0871, 0, 2.8363 )
+group = "stage2"
+
+[node name="BrickStackStageTwo" type="StaticBody" parent="World"]
+transform = Transform( 0.816843, 0, -0.57686, 0, 1, 0, 0.57686, 0, 0.816843, 22.6974, 0, -22.1552 )
 script = ExtResource( 12 )
+group = "stage2"
 
-[node name="CollisionShape" type="CollisionShape" parent="World/Cube"]
-shape = SubResource( 6 )
+[node name="BuildingBrick1" parent="World/BrickStackStageTwo" instance=ExtResource( 28 )]
 
-[node name="MeshInstance" type="MeshInstance" parent="World/Cube"]
-mesh = SubResource( 7 )
-material/0 = SubResource( 8 )
+[node name="CollisionShape" type="CollisionShape" parent="World/BrickStackStageTwo"]
+shape = SubResource( 29 )
+
+[node name="BuildingBrick7" parent="World/BrickStackStageTwo" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3.77209 )
+material/0 = SubResource( 16 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="World/BrickStackStageTwo"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3.77209 )
+shape = SubResource( 30 )
+
+[node name="BuildingBrick2" parent="World/BrickStackStageTwo" instance=ExtResource( 27 )]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -1.01015, 0, 2.3896 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="World/BrickStackStageTwo"]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -1.01015, 0, 2.3896 )
+shape = SubResource( 31 )
+
+[node name="BuildingBrick3" parent="World/BrickStackStageTwo" instance=ExtResource( 27 )]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -4.01015, 0, 2.3896 )
+material/0 = SubResource( 16 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="World/BrickStackStageTwo"]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -4.01015, 0, 2.3896 )
+shape = SubResource( 32 )
+
+[node name="BuildingBrick4" parent="World/BrickStackStageTwo" instance=ExtResource( 27 )]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -7.01015, 0, 2.3896 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="World/BrickStackStageTwo"]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -7.01015, 0, 2.3896 )
+shape = SubResource( 33 )
+
+[node name="BuildingBrick5" parent="World/BrickStackStageTwo" instance=ExtResource( 27 )]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -5.01015, 1, 2.3896 )
+material/0 = SubResource( 19 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="World/BrickStackStageTwo"]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -5.01015, 1, 2.3896 )
+shape = SubResource( 34 )
+
+[node name="BuildingBrick6" parent="World/BrickStackStageTwo" instance=ExtResource( 27 )]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -2.01015, 1, 2.3896 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="World/BrickStackStageTwo"]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -2.01015, 1, 2.3896 )
+shape = SubResource( 35 )
+
+[node name="BuildingBrick8" parent="World/BrickStackStageTwo" instance=ExtResource( 27 )]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -1.01015, 2, 2.3896 )
+material/0 = SubResource( 36 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="World/BrickStackStageTwo"]
+transform = Transform( -7.64949e-08, 0, -1, 0, 1, 0, 1.75, 0, -4.37114e-08, -1.01015, 2, 2.3896 )
+shape = SubResource( 37 )
+
+[node name="RubiksCube2" parent="World" instance=ExtResource( 20 )]
+transform = Transform( 0.860698, 0.36, -0.36, 0, 0.707107, 0.707107, 0.509117, -0.608605, 0.608605, 13.7257, 1.0056, -20.5605 )
+group = "stage2"
+
+[node name="RubiksCube3" parent="World" instance=ExtResource( 20 )]
+transform = Transform( 0.544873, 0, 0.838519, 0, 1, 0, -0.838518, 0, 0.544873, -25.5901, 2.35766, 20.4925 )
+group = "stage2"
+
+[node name="Rocket3" parent="World" instance=ExtResource( 14 )]
+transform = Transform( -0.173617, -0.404171, -0.237704, 0.335132, 0.0703167, -0.364337, 0.327938, -0.285835, 0.246485, 9.77986, 9.71398, 29.7099 )
+group = "stage2"
+
+[node name="Rocket" parent="World/Rocket3" index="0"]
+material/1 = SubResource( 38 )
+material/4 = SubResource( 11 )
+
+[node name="BrickStack3" type="StaticBody" parent="World"]
+transform = Transform( 0.757212, 0.0256091, 0.652667, -1.5088e-07, -0.999231, 0.0392076, 0.65317, -0.0296885, -0.756629, -20.4503, 10.2725, -9.99059 )
+script = ExtResource( 12 )
+group = "stage2"
+
+[node name="BuildingBrick2" parent="World/BrickStack3" instance=ExtResource( 27 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="World/BrickStack3"]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 24 )
+
+[node name="BuildingBrick3" parent="World/BrickStack3" instance=ExtResource( 27 )]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+material/0 = SubResource( 19 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="World/BrickStack3"]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+shape = SubResource( 25 )
+
+[node name="BuildingBrick4" parent="World/BrickStack3" instance=ExtResource( 27 )]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 1.75341, 0, 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="World/BrickStack3"]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 1.75341, 0, 2 )
+shape = SubResource( 26 )
+
+[node name="BuildingBrick5" parent="World/BrickStack3" instance=ExtResource( 27 )]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0.860149, 1, 2 )
+material/0 = SubResource( 16 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="World/BrickStack3"]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0.860149, 1, 2 )
+shape = SubResource( 27 )
+
+[node name="BuildingBrick6" parent="World/BrickStack3" instance=ExtResource( 27 )]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0.860149, 1, -1 )
+material/0 = SubResource( 19 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="World/BrickStack3"]
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0.860149, 1, -1 )
+shape = SubResource( 28 )
+
+[node name="Crayon2" parent="World" instance=ExtResource( 22 )]
+transform = Transform( 0.122033, 0.959008, -0.255755, 0.916037, -0.00962955, 0.400977, 0.382078, -0.283213, -0.879663, 0.837927, 0.448623, -9.64521 )
+group = "stage2"
+
+[node name="Crayon" parent="World/Crayon2" index="0"]
+material/0 = SubResource( 39 )
+material/1 = SubResource( 40 )
+material/2 = SubResource( 41 )
+
+[node name="Crayon3" parent="World" instance=ExtResource( 22 )]
+transform = Transform( 0.141264, 0.959008, -0.245656, 0.882632, -0.00962955, 0.469965, 0.448335, -0.283213, -0.847812, 0.632549, 0.437083, -10.1753 )
+group = "stage2"
+
+[node name="Crayon4" parent="World" instance=ExtResource( 22 )]
+transform = Transform( -0.0963393, 0.959008, -0.266498, 0.928814, -0.00962944, -0.37042, -0.357802, -0.283213, -0.889813, 0.473855, 0.424735, -10.709 )
+group = "stage2"
+
+[node name="Crayon" parent="World/Crayon4" index="0"]
+material/0 = SubResource( 42 )
+material/1 = SubResource( 43 )
+
+[node name="Crayon5" parent="World" instance=ExtResource( 22 )]
+transform = Transform( 0.0029429, 0.959008, -0.283362, 0.999706, -0.00962951, -0.0222075, -0.0240258, -0.283213, -0.958756, 0.603576, 0.942098, -10.4531 )
+group = "stage2"
+
+[node name="Crayon" parent="World/Crayon5" index="0"]
+material/0 = SubResource( 44 )
+material/1 = SubResource( 45 )
+
+[node name="Crayon6" parent="World" instance=ExtResource( 22 )]
+transform = Transform( 0.0029429, 0.959008, -0.283362, 0.999706, -0.00962951, -0.0222075, -0.0240258, -0.283213, -0.958756, 0.775836, 0.978178, -9.87025 )
+group = "stage2"
+
+[node name="Crayon" parent="World/Crayon6" index="0"]
+material/0 = SubResource( 46 )
+material/1 = SubResource( 47 )
+
+[node name="Crayon7" parent="World" instance=ExtResource( 22 )]
+transform = Transform( 0.0029429, 0.959008, -0.283362, 0.999706, -0.00962951, -0.0222075, -0.0240258, -0.283213, -0.958756, 0.679243, 1.43525, -10.2123 )
+group = "stage2"
+
+[node name="Crayon" parent="World/Crayon7" index="0"]
+material/0 = SubResource( 48 )
+material/1 = SubResource( 49 )
+
+[node name="==========  STAGE 2 END =======" type="Node" parent="World"]
 
 [node name="InvisibleWalls" type="StaticBody" parent="."]
 collision_mask = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="InvisibleWalls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 40 )
@@ -184,41 +602,64 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 10, 0 )
 shape = SubResource( 13 )
 
 [node name="EnemyObectivesContainer" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
-[node name="EnemyObjective" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3817, 0, 20.7166 )
+[node name="Stage1-1" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6274, 0, -8.66498 )
 
-[node name="EnemyObjective2" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.9921, 0, -19.8503 )
+[node name="Stage1-2" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7545, 0, 18.5636 )
 
-[node name="EnemyObjective3" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8783, 0, -19.8503 )
+[node name="Stage1-3" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69.2812, 0, -9.52275 )
+
+[node name="Stage2-1" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.807, 0, 26.2009 )
 group = "objective_stage_2"
 
-[node name="EnemyObjective4" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.1602, 0, 13.7471 )
+[node name="FlagPole" parent="EnemyObectivesContainer/Stage2-1/Cube" index="2"]
+material/2 = SubResource( 14 )
+
+[node name="Stage2-2" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5196, 0, -28.5301 )
 group = "objective_stage_2"
+
+[node name="FlagPole" parent="EnemyObectivesContainer/Stage2-2/Cube" index="2"]
+material/2 = SubResource( 14 )
+
+[node name="Stage2-3" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7953, 0, 7.65868 )
+group = "objective_stage_2"
+
+[node name="FlagPole" parent="EnemyObectivesContainer/Stage2-3/Cube" index="2"]
+material/2 = SubResource( 14 )
 
 [node name="SpawnLocations" type="Spatial" parent="."]
 
 [node name="SpawnPoint" type="Position3D" parent="SpawnLocations"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.0222, 0.509256, -24.1065 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61.5912, 0.509256, -24.7487 )
 script = ExtResource( 6 )
 
 [node name="SpawnPoint2" type="Position3D" parent="SpawnLocations"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.0222, 0.509256, 2.3823 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61.4698, 0.509256, 1.5714 )
 script = ExtResource( 6 )
 
 [node name="SpawnPoint3" type="Position3D" parent="SpawnLocations"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.0222, 0.509256, 26.6867 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -62.1093, 0.509256, 26.841 )
 script = ExtResource( 6 )
 
 [node name="Navigation" type="Navigation" parent="."]
 script = ExtResource( 4 )
 
-[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
-visible = false
-navmesh = ExtResource( 27 )
+[node name="NavMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="SkyfallLocation" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 70.5224, -13.8283 )
@@ -252,3 +693,12 @@ script = ExtResource( 11 )
 [connection signal="player_active_changed" from="Player" to="UI" method="player_active_changed"]
 
 [editable path="World/Rocket2"]
+[editable path="World/Rocket3"]
+[editable path="World/Crayon2"]
+[editable path="World/Crayon4"]
+[editable path="World/Crayon5"]
+[editable path="World/Crayon6"]
+[editable path="World/Crayon7"]
+[editable path="EnemyObectivesContainer/Stage2-1"]
+[editable path="EnemyObectivesContainer/Stage2-2"]
+[editable path="EnemyObectivesContainer/Stage2-3"]

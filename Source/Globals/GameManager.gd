@@ -37,16 +37,16 @@ var event_list: Array = [
 	{
 		"action": "spawn_enemies",
 		"enemies": {
-			"EnemyFollowers": 10,
+			"EnemyFollowers": 1,
 			"EnemyChasers": 1
 		},
-		"next_event_trigger_at": 3,
+		"next_event_trigger_at": 1,
 		"reset_from_index": 2
 	},
 	{
 		"action": "spawn_enemies",
 		"enemies": {
-			"EnemyFollowers": 10
+			"EnemyFollowers": 1
 		},
 		"next_event_trigger_at": 0,
 		"reset_from_index": 2
@@ -64,7 +64,7 @@ var event_list: Array = [
 	},
 	{
 		"action": "skyfall",
-		"group": "intermission2"
+		"group": "stage2"
 	},
 	{
 		"action": "reset_objective",
