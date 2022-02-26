@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/FS013_Sunset.png-6ea28d1a37ebf9e0146a05f2baf57f17.s3tc.stex"
-path.etc2="res://.import/FS013_Sunset.png-6ea28d1a37ebf9e0146a05f2baf57f17.etc2.stex"
+path.s3tc="res://.import/CrayonScribbles.png-419ea064009d528a6640a4db6e98fdf4.s3tc.stex"
+path.etc2="res://.import/CrayonScribbles.png-419ea064009d528a6640a4db6e98fdf4.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/Skyboxes/FS013_Sunset.png"
-dest_files=[ "res://.import/FS013_Sunset.png-6ea28d1a37ebf9e0146a05f2baf57f17.s3tc.stex", "res://.import/FS013_Sunset.png-6ea28d1a37ebf9e0146a05f2baf57f17.etc2.stex" ]
+source_file="res://Models/AllModels/Textures/CrayonScribbles.png"
+dest_files=[ "res://.import/CrayonScribbles.png-419ea064009d528a6640a4db6e98fdf4.s3tc.stex", "res://.import/CrayonScribbles.png-419ea064009d528a6640a4db6e98fdf4.etc2.stex" ]
 
 [params]
 
