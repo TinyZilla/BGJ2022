@@ -37,7 +37,8 @@ var event_list: Array = [
 	{
 		"action": "spawn_enemies",
 		"enemies": {
-			"EnemyFollowers": 10
+			"EnemyFollowers": 10,
+			"EnemyChasers": 1
 		},
 		"next_event_trigger_at": 3,
 		"reset_from_index": 2
@@ -179,10 +180,7 @@ func do_event() -> void:
 
 # Actually start the game.
 func start() -> void:
-
 	while current_index < event_list.size():
 		yield(do_event(), "completed")
 	
 	print("Out of Start Loop. Game done.")
-
-			

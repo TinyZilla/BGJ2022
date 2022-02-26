@@ -192,6 +192,7 @@ shader_param/glow_strength = 5.0
 
 [node name="Player" instance=ExtResource( 2 )]
 collision_layer = 2
+collision_mask = 25
 script = ExtResource( 4 )
 
 [node name="Brain" type="Node" parent="." index="0"]
