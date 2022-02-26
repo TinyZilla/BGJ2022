@@ -301,6 +301,7 @@ uniform float noise_strength = 0.1;
 uniform float noise_scale = 1.0;
 uniform float noise_speed = 0.2;
 uniform float mask_blend = 0.1;
+uniform float tex_mip_level = 0.0;
 
 void fragment(){
 	vec2 uv = UV;
@@ -308,7 +309,7 @@ void fragment(){
 	float n = texture(noise_texture, UV * noise_scale + TIME * noise_speed).r;
 	uv += n * noise_strength * top_mask;
 	
-	ALBEDO = texture(hdri, uv).rgb;
+	ALBEDO = texture(hdri, uv, tex_mip_level).rgb;
 }
 "
 
@@ -324,6 +325,7 @@ shader_param/noise_strength = 0.008
 shader_param/noise_scale = 7.0
 shader_param/noise_speed = 0.2
 shader_param/mask_blend = 0.13
+shader_param/tex_mip_level = 0.5
 shader_param/hdri = ExtResource( 24 )
 shader_param/noise_texture = SubResource( 42 )
 
