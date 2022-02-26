@@ -285,3 +285,5 @@ transform = Transform( -0.0373762, 0, -0.999301, 0, 1, 0, 0.999301, 0, -0.037376
 
 [node name="EnemyContainer" type="Spatial" parent="."]
 script = ExtResource( 11 )
+
+[connection signal="player_active_changed" from="Player" to="UI" method="player_active_changed"]
