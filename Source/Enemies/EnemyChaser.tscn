@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Models/ReExportedPirate/CutlassHandle.material" type="Material" id=1]
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
@@ -783,8 +783,16 @@ bind/211/name = "thigh_ik_target_r"
 bind/211/bone = -1
 bind/211/pose = Transform( 0.90094, 0.00756226, 0.433878, 0.433878, -0.0331223, -0.900363, 0.00756226, 0.999423, -0.0331223, 0.114167, 0.95128, -0.459192 )
 
+[sub_resource type="SpatialMaterial" id=14]
+flags_unshaded = true
+params_cull_mode = 1
+params_grow = true
+params_grow_amount = 0.005
+albedo_color = Color( 0, 0, 0, 1 )
+
 [sub_resource type="SpatialMaterial" id=6]
 resource_name = "PirateShirt"
+next_pass = SubResource( 14 )
 params_cull_mode = 2
 albedo_color = Color( 0.909804, 0.156863, 0.12549, 1 )
 roughness = 0.5
@@ -4041,7 +4049,7 @@ bones/211/enabled = true
 bones/211/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Body/RePirate/PirateRig/Skeleton" index="0"]
-transform = Transform( -0.917985, -0.324701, 0.227757, 0.370352, -0.907263, 0.199284, 0.141927, 0.26729, 0.953106, -0.326221, 1.03117, 0.0304448 )
+transform = Transform( -0.913631, -0.353207, 0.201303, 0.404648, -0.837831, 0.366471, 0.0392174, 0.416276, 0.908391, -0.263076, 0.909198, 0.208562 )
 bone_name = "hand_ik_r"
 
 [node name="Cutlass" type="MeshInstance" parent="Body/RePirate/PirateRig/Skeleton/BoneAttachment" index="0"]
