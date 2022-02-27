@@ -142,6 +142,8 @@ func do_event() -> void:
 				current_index += 1
 				return
 
+			if event.group == "stage2":
+				Globals.navigation.swap_nav_mesh()
 			SkyfallManager.drop_group(event.group)
 			yield(SkyfallManager, "skyfall_finished")
 		"skyfall_objective":
