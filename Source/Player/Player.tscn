@@ -2000,6 +2000,9 @@ material/0 = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.47165 )
 movement_state_machine_path = NodePath("../../../MovementStateMachine")
 
+[node name="Listener" type="Listener" parent="." index="6"]
+current = true
+
 [connection signal="input_direction_changed" from="Brain" to="MovementStateMachine" method="input_direction_changed"]
 [connection signal="jump_changed" from="Brain" to="MovementStateMachine" method="jump_changed"]
 [connection signal="mouse_moved_x" from="Brain" to="." method="_mouse_moved_x"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Enemy_Pain3.wav-74c1978037660760ef735e8c3e03cfe3.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Enemy_Pain3.wav"
+dest_files=[ "res://.import/Enemy_Pain3.wav-74c1978037660760ef735e8c3e03cfe3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

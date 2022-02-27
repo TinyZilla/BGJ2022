@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Enemy_Sword2.wav-46728e8aba77f281a1ee5fb1c99f0e6b.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Enemy_Sword2.wav"
+dest_files=[ "res://.import/Enemy_Sword2.wav-46728e8aba77f281a1ee5fb1c99f0e6b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Models/ReExportedPirate/CutlassHandle.material" type="Material" id=1]
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Models/ReExportedPirate/PiratePants.material" type="Material" id=14]
 [ext_resource path="res://Models/ReExportedPirate/PirateShirt.material" type="Material" id=15]
 [ext_resource path="res://Models/ReExportedPirate/PirateBoot.material" type="Material" id=16]
+[ext_resource path="res://Audio/SFX/Enemy_Footstep1.wav" type="AudioStream" id=17]
+[ext_resource path="res://Audio/SFX/Enemy_Sword2.wav" type="AudioStream" id=18]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "bgjassets_Cube048"
@@ -1897,6 +1899,20 @@ tracks/151/keys = {
 "method": "do_damage"
 } ]
 }
+tracks/152/type = "method"
+tracks/152/path = NodePath("Slash")
+tracks/152/interp = 1
+tracks/152/loop_wrap = true
+tracks/152/imported = false
+tracks/152/enabled = true
+tracks/152/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "runLegs"
@@ -2966,6 +2982,23 @@ tracks/151/loop_wrap = true
 tracks/151/imported = false
 tracks/151/enabled = true
 tracks/151/keys = PoolRealArray( 0, 1, 0.000252843, -0.00110728, 0.0334111, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0.000553668, -0.0024249, 0.0731676, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0.000247031, -0.00108182, 0.0326442, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.2, 1, -0.000901967, 0.00395072, -0.119204, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.266667, 1, -0.000507385, 0.0022223, -0.067054, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0.000641674, -0.00281018, 0.0847938, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.4, 1, 0.000247031, -0.00108182, 0.0326442, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.466667, 1, -0.000901967, 0.00395072, -0.119204, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.533333, 1, -0.000199795, 0.000875235, -0.0264078, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.55, 1, 6.4224e-05, -0.000281215, 0.00848648, -9.31323e-10, 0, 0, 1, 1, 1, 1 )
+tracks/152/type = "method"
+tracks/152/path = NodePath("Footstep")
+tracks/152/interp = 1
+tracks/152/loop_wrap = true
+tracks/152/imported = false
+tracks/152/enabled = true
+tracks/152/keys = {
+"times": PoolRealArray( 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [node name="EnemyChaser" instance=ExtResource( 2 )]
 collision_layer = 8
@@ -3911,7 +3944,7 @@ bones/184/name = "hand_ik_r"
 bones/184/parent = 183
 bones/184/rest = Transform( 0.394743, -0.213034, 0.893753, 0.886413, -0.167662, -0.431465, 0.241765, 0.962552, 0.122652, -0.293682, -0.558936, 0.275271 )
 bones/184/enabled = true
-bones/184/bound_children = [  ]
+bones/184/bound_children = [ NodePath("BoneAttachment") ]
 bones/185/name = "mchupper_arm_ik_target_r"
 bones/185/parent = 184
 bones/185/rest = Transform( 1, -1.11759e-08, 1.90921e-08, 1.11759e-08, 1, -6.28643e-09, -1.90921e-08, 6.28643e-09, 1, 3.25963e-08, -3.95812e-09, 1.58325e-08 )
@@ -4049,7 +4082,7 @@ bones/211/enabled = true
 bones/211/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Body/RePirate/PirateRig/Skeleton" index="0"]
-transform = Transform( -0.913631, -0.353207, 0.201303, 0.404648, -0.837831, 0.366471, 0.0392174, 0.416276, 0.908391, -0.263076, 0.909198, 0.208562 )
+transform = Transform( -0.940619, 0.111848, 0.320509, 0.250176, -0.40978, 0.877208, 0.229452, 0.905301, 0.357465, -0.260722, 1.04766, 0.241992 )
 bone_name = "hand_ik_r"
 
 [node name="Cutlass" type="MeshInstance" parent="Body/RePirate/PirateRig/Skeleton/BoneAttachment" index="0"]
@@ -4093,6 +4126,18 @@ shape = SubResource( 13 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body/RePirate" index="2"]
 anims/SwordSlash = SubResource( 11 )
 anims/runLegs = SubResource( 12 )
+
+[node name="Footstep" type="AudioStreamPlayer3D" parent="Body/RePirate" index="3"]
+stream = ExtResource( 17 )
+max_db = 2.0
+max_distance = 20.0
+bus = "SFX"
+
+[node name="Slash" type="AudioStreamPlayer3D" parent="Body/RePirate" index="4"]
+stream = ExtResource( 18 )
+max_db = 1.0
+max_distance = 20.0
+bus = "SFX"
 
 [node name="BodyshotPosition" type="Position3D" parent="Body" index="1"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.406724, 0.0588914 )

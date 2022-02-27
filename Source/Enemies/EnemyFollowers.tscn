@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Models/ReExportedPirate/CutlassBlade.material" type="Material" id=1]
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
@@ -10,12 +10,14 @@
 [ext_resource path="res://Models/ReExportedPirate/PirateHatHighlight.material" type="Material" id=8]
 [ext_resource path="res://Models/ReExportedPirate/CutlassHandle.material" type="Material" id=9]
 [ext_resource path="res://Models/ReExportedPirate/PirateSkin.material" type="Material" id=10]
+[ext_resource path="res://Audio/SFX/Enemy_Sword3.wav" type="AudioStream" id=11]
 [ext_resource path="res://Models/ReExportedPirate/PirateFace.material" type="Material" id=12]
 [ext_resource path="res://Models/ReExportedPirate/PirateHat.material" type="Material" id=13]
 [ext_resource path="res://Models/ReExportedPirate/PiratePants.material" type="Material" id=14]
 [ext_resource path="res://Models/ReExportedPirate/PirateShirt.material" type="Material" id=15]
 [ext_resource path="res://Models/ReExportedPirate/PirateBoot.material" type="Material" id=16]
 [ext_resource path="res://Source/Enemies/AttackModule.gd" type="Script" id=17]
+[ext_resource path="res://Audio/SFX/Enemy_Footstep1.wav" type="AudioStream" id=18]
 
 [sub_resource type="ArrayMesh" id=19]
 resource_name = "bgjassets_Cube048"
@@ -1883,6 +1885,20 @@ tracks/151/keys = {
 "method": "do_damage"
 } ]
 }
+tracks/152/type = "method"
+tracks/152/path = NodePath("Slash")
+tracks/152/interp = 1
+tracks/152/loop_wrap = true
+tracks/152/imported = false
+tracks/152/enabled = true
+tracks/152/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "runLegs"
@@ -2952,6 +2968,23 @@ tracks/151/loop_wrap = true
 tracks/151/imported = false
 tracks/151/enabled = true
 tracks/151/keys = PoolRealArray( 0, 1, 0.000252843, -0.00110728, 0.0334111, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0.000553668, -0.0024249, 0.0731676, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0.000247031, -0.00108182, 0.0326442, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.2, 1, -0.000901967, 0.00395072, -0.119204, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.266667, 1, -0.000507385, 0.0022223, -0.067054, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0.000641674, -0.00281018, 0.0847938, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.4, 1, 0.000247031, -0.00108182, 0.0326442, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.466667, 1, -0.000901967, 0.00395072, -0.119204, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.533333, 1, -0.000199795, 0.000875235, -0.0264078, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.55, 1, 6.4224e-05, -0.000281215, 0.00848648, -9.31323e-10, 0, 0, 1, 1, 1, 1 )
+tracks/152/type = "method"
+tracks/152/path = NodePath("Footstep")
+tracks/152/interp = 1
+tracks/152/loop_wrap = true
+tracks/152/imported = false
+tracks/152/enabled = true
+tracks/152/keys = {
+"times": PoolRealArray( 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [node name="EnemyFollowers" instance=ExtResource( 2 )]
 collision_layer = 8
@@ -4035,7 +4068,7 @@ bones/211/enabled = true
 bones/211/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Body/RePirate/PirateRig/Skeleton" index="0"]
-transform = Transform( -0.91377, -0.352668, 0.201616, 0.403913, -0.84171, 0.358303, 0.0433397, 0.408841, 0.911575, -0.265442, 0.913009, 0.201792 )
+transform = Transform( -0.917985, -0.324701, 0.227757, 0.350592, -0.932826, 0.0831996, 0.185442, 0.156226, 0.970157, -0.356527, 1.09327, -0.0797571 )
 bone_name = "hand_ik_r"
 
 [node name="Cutlass" type="MeshInstance" parent="Body/RePirate/PirateRig/Skeleton/BoneAttachment" index="0"]
@@ -4079,6 +4112,18 @@ shape = SubResource( 17 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body/RePirate" index="2"]
 anims/SwordSlash = SubResource( 11 )
 anims/runLegs = SubResource( 12 )
+
+[node name="Footstep" type="AudioStreamPlayer3D" parent="Body/RePirate" index="3"]
+stream = ExtResource( 18 )
+max_db = 2.0
+max_distance = 20.0
+bus = "SFX"
+
+[node name="Slash" type="AudioStreamPlayer3D" parent="Body/RePirate" index="4"]
+stream = ExtResource( 11 )
+max_db = 1.0
+max_distance = 20.0
+bus = "SFX"
 
 [node name="Legs" parent="." index="3"]
 _max_velocity = 4.0

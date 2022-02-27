@@ -21,6 +21,6 @@ func _exit_tree() -> void:
 func hurt(damage : float) -> void:
 	health -= damage
 	health = clamp(health, 0.0, MAX_HEALTH)
-	
+
 	if health == 0.0:
 		queue_free()
