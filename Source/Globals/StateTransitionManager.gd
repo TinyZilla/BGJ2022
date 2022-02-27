@@ -36,6 +36,12 @@ var pos_trans_type: int = Tween.TRANS_SINE
 var pos_in_ease_type: int = Tween.EASE_IN
 var pos_out_ease_type: int = Tween.EASE_OUT
 
+const bgm := {
+	"your_reality" : preload("res://Audio/BGM/BGJ_RealityMix.wav"),
+	"combat" : preload("res://Audio/BGM/BGJ_CombatMix.wav")
+}
+var bgm_volume : float = -18.0
+
 func on_ready() -> void:
 	if overhead_cam == null or player_cam == null:
 		print("State Transition Manager Not set up correctly. Not doing anyhting")
@@ -49,6 +55,8 @@ func on_ready() -> void:
 	player.disable()
 
 	var _t = tween.connect("tween_all_completed", self, "tween_finished")
+	
+	AudioManager.crossfade_music(bgm["your_reality"], 1.0, bgm_volume, "BGM")
 
 func transition() -> void:
 	if overhead_cam == null or player_cam == null:
@@ -63,10 +71,13 @@ func transition() -> void:
 		_t = tween.interpolate_property(overhead_cam, "transform:basis", overhead_cam_global_transform.basis, player_cam_global_transform.basis, rotation_transition_time, rot_trans_type, rot_in_ease_type)
 		_t = tween.interpolate_property(overhead_cam, "transform:origin", overhead_cam_global_transform.origin, player_cam_global_transform.origin, position_transition_time, pos_trans_type, pos_in_ease_type)
 		player.disable()
+		AudioManager.crossfade_music(bgm["combat"], 1.0, bgm_volume, "BGM")
 	else:
 		_t = tween.interpolate_property(overhead_cam, "transform:basis", player_cam_global_transform.basis, overhead_cam_global_transform.basis, rotation_transition_time, rot_trans_type, rot_out_ease_type)
 		_t = tween.interpolate_property(overhead_cam, "transform:origin", player_cam_global_transform.origin, overhead_cam_global_transform.origin, position_transition_time, pos_trans_type, pos_out_ease_type)
-
+		
+		AudioManager.crossfade_music(bgm["your_reality"], 1.0, bgm_volume, "BGM")
+		
 		player.disable()
 		player_cam.current = false
 		overhead_cam.current = true

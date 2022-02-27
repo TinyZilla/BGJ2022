@@ -15,8 +15,12 @@ script = ExtResource( 4 )
 [node name="Walk" type="Node" parent="."]
 script = ExtResource( 3 )
 
+[node name="Timer" type="Timer" parent="Walk"]
+
 [node name="Sprint" type="Node" parent="."]
 script = ExtResource( 2 )
 
 [node name="Jump" type="Node" parent="."]
 script = ExtResource( 5 )
+
+[connection signal="timeout" from="Walk/Timer" to="Walk" method="play_footsteps_sfx"]
