@@ -114,7 +114,7 @@ var event_list: Array = [
 			"EnemyFollowers": 10,
 			"EnemyChasers": 6
 		},
-		"next_event_trigger_at": 6,
+		"next_event_trigger_at": 4,
 		"reset_from_index": 15
 	},
 	{
@@ -123,13 +123,13 @@ var event_list: Array = [
 			"EnemyFollowers": 15,
 			"EnemyChasers": 3
 		},
-		"next_event_trigger_at": 4,
+		"next_event_trigger_at": 3,
 		"reset_from_index": 15
 	},
 	{
 		"action": "spawn_enemies",
 		"enemies": {
-			"EnemyFollowers": 40,
+			"EnemyFollowers": 30,
 			"EnemyChasers": 10
 		},
 		"next_event_trigger_at": 0,
