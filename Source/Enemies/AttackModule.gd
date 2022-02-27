@@ -1,24 +1,33 @@
 extends Spatial
 
 export(float) var damage: float = 10.0
-export(float) var atk_cooldown: float = 1.5
+export(float) var atk_cooldown: float = 2.0
 
 onready var location_ref: Spatial = get_owner()
 var current_attack_objective: Vector3
 
 var is_attacking: bool = false
 
+var state_machine
+
+func _ready() -> void:
+	var tree = $AnimationTree
+	state_machine = tree["parameters/playback"]
+
 func update_objective(objective: Vector3) -> void:
 	current_attack_objective = objective
 
 func attack() -> void:
 	is_attacking = true
+
+	state_machine.travel("slash")
+	var _t = get_tree().create_timer(atk_cooldown).connect("timeout", self, "reset_attack")
+
+func do_damage() -> void:
 	for body in $Area.get_overlapping_bodies():
 		if body.has_method("hurt"):
 			body.hurt(damage)
 
-	var _t = get_tree().create_timer(atk_cooldown).connect("timeout", self, "reset_attack")
-	
 func reset_attack() -> void:
 	is_attacking = false
 
