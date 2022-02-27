@@ -31,6 +31,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 
 [node name="AttackModule" type="Spatial" parent="Body" index="1"]
 script = ExtResource( 7 )
+damage = 8.0
 
 [node name="Area" type="Area" parent="Body/AttackModule" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07251, -0.683245 )
@@ -47,7 +48,7 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.406724, 0.0588914 )
 
 [node name="Legs" parent="." index="3"]
-_max_velocity = 3.0
+_max_velocity = 6.0
 
 [connection signal="current_move_target_updated" from="Brain" to="ObjectiveToMovement" method="update_current_objective"]
 [connection signal="current_objective_updated" from="Brain" to="Body/AttackModule" method="update_objective"]

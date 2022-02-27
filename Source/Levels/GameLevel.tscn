@@ -235,6 +235,10 @@ script = SubResource( 50 )
 [node name="========= Level Setup ==========" type="Node" parent="."]
 
 [node name="World" type="Spatial" parent="." groups=["World"]]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Floor" type="StaticBody" parent="World"]
 __meta__ = {
@@ -621,6 +625,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7545, 0, 18.5636 )
 
 [node name="Stage1-3" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69.2812, 0, -9.52275 )
+MAX_HEALTH = 30.0
 
 [node name="Stage2-1" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.807, 0, 26.2009 )
@@ -639,6 +644,7 @@ material/2 = SubResource( 14 )
 [node name="Stage2-3" parent="EnemyObectivesContainer" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7953, 0, 7.65868 )
 group = "objective_stage_2"
+MAX_HEALTH = 30.0
 
 [node name="FlagPole" parent="EnemyObectivesContainer/Stage2-3/Cube" index="2"]
 material/2 = SubResource( 14 )
@@ -672,7 +678,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 70.5224, -13.8283 )
 script = ExtResource( 10 )
 
 [node name="OverheadCamera" type="Camera" parent="."]
-transform = Transform( 0.999999, 0.00154126, -0.000457923, 0, 0.284805, 0.958586, 0.00160785, -0.958584, 0.284805, -0.0292131, 59.7849, 26.1113 )
+transform = Transform( 1, 0, 0, 0, 0.292372, 0.956305, 0, -0.956305, 0.292372, -0.0292131, 59.7849, 26.1113 )
 script = ExtResource( 8 )
 
 [node name="====== Lighting Env ========" type="Node" parent="."]

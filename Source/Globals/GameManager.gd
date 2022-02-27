@@ -3,107 +3,137 @@ extends Node
 # This is where all the sequence is gonna be
 
 var event_list: Array = [
-	{
+	{	# 0
 		"action": "pause",
 		"duration": 1.0
 	},
-	{
+	{	#1
 		"action": "skyfall",
 		"group": "default"
 	},
-	{
+	{	#2
 		"action": "reset_objective",
 		"group": "objective_stage_1"
 	},
-	{
+	{	#3
 		"action": "pause",
 		"duration": 1.0
 	},
-	{
+	{	#4
 		"action": "skyfall_objective",
 		"group": "objective_stage_1"
 	},
-	{
+	{	#5
 		"action": "pause",
-		"duration": 1.0
+		"duration": 4.0
 	},
-	{
+	{	#6
 		"action": "viewchange"
 	},
-	{
+	{	#7
 		"action": "pause",
 		"duration": 5.0
 	},
-	{
+	{	#8
 		"action": "spawn_enemies",
 		"enemies": {
-			"EnemyFollowers": 1,
-			"EnemyChasers": 1
+			"EnemyFollowers": 2,
+			"EnemyChasers": 2
 		},
-		"next_event_trigger_at": 1,
+		"next_event_trigger_at": 2,
 		"reset_from_index": 2
 	},
-	{
+	{	#9
 		"action": "spawn_enemies",
 		"enemies": {
-			"EnemyFollowers": 1
+			"EnemyFollowers": 6,
+			"EnemyChasers": 4
+		},
+		"next_event_trigger_at": 4,
+		"reset_from_index": 2
+	},
+	{	#10
+		"action": "spawn_enemies",
+		"enemies": {
+			"EnemyFollowers": 10,
+			"EnemyChasers": 5
 		},
 		"next_event_trigger_at": 0,
 		"reset_from_index": 2
 	},
-	{
+	{	#11
 		"action": "pause",
 		"duration": 2.0
 	},
-	{
+	{	#12
 		"action": "viewchange"
 	},
-	{
+	{	#13
 		"action": "pause",
 		"duration": 2.0
 	},
-	{
+	{	#14
 		"action": "skyfall",
 		"group": "stage2"
 	},
-	{
+	{	#15
 		"action": "reset_objective",
 		"group": "objective_stage_2"
 	},
-	{
+	{	#16
 		"action": "pause",
 		"duration": 1.0
 	},
-	{
+	{	#17
 		"action": "skyfall_objective",
 		"group": "objective_stage_2"
 	},
-	{
+	{	#18
 		"action": "pause",
-		"duration": 1.0
+		"duration": 4.0
 	},
-	{
+	{	#19
 		"action": "viewchange"
 	},
-	{
+	{	#20
 		"action": "pause",
 		"duration": 5.0
 	},
-	{
+	{	#21
 		"action": "spawn_enemies",
 		"enemies": {
-			"EnemyFollowers": 2
+			"EnemyFollowers": 10,
+			"EnemyChasers": 3
 		},
-		"next_event_trigger_at": 1,
-		"reset_from_index": 14
+		"next_event_trigger_at": 6,
+		"reset_from_index": 15
 	},
 	{
 		"action": "spawn_enemies",
 		"enemies": {
-			"EnemyFollowers": 2
+			"EnemyFollowers": 10,
+			"EnemyChasers": 6
+		},
+		"next_event_trigger_at": 6,
+		"reset_from_index": 15
+	},
+	{
+		"action": "spawn_enemies",
+		"enemies": {
+			"EnemyFollowers": 15,
+			"EnemyChasers": 3
+		},
+		"next_event_trigger_at": 4,
+		"reset_from_index": 15
+	},
+	{
+		"action": "spawn_enemies",
+		"enemies": {
+			"EnemyFollowers": 40,
+			"EnemyChasers": 10
 		},
 		"next_event_trigger_at": 0,
-		"reset_from_index": 14
+		"reset_from_index": 15
 	},
 	{
 		"action": "pause",

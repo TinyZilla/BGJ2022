@@ -1,6 +1,7 @@
 extends Spatial
 
 export(float) var damage: float = 10.0
+export(float) var atk_cooldown: float = 1.5
 
 onready var location_ref: Spatial = get_owner()
 var current_attack_objective: Vector3
@@ -16,7 +17,7 @@ func attack() -> void:
 		if body.has_method("hurt"):
 			body.hurt(damage)
 
-	var _t = get_tree().create_timer(1.5).connect("timeout", self, "reset_attack")
+	var _t = get_tree().create_timer(atk_cooldown).connect("timeout", self, "reset_attack")
 	
 func reset_attack() -> void:
 	is_attacking = false
