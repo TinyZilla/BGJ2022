@@ -8,7 +8,6 @@
 [ext_resource path="res://Source/Objects/SpawnPoint.gd" type="Script" id=6]
 [ext_resource path="res://Source/Objects/EnemyObjective/EnemyObjective.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Source/Objects/OverheadCamera.gd" type="Script" id=8]
-[ext_resource path="res://Source/Levels/Level.gd" type="Script" id=9]
 [ext_resource path="res://Source/Objects/SkyfallLocation.gd" type="Script" id=10]
 [ext_resource path="res://Experiments/PLZREMOVEEnemyContainer.gd" type="Script" id=11]
 [ext_resource path="res://Source/Objects/SkyfallBlock.gd" type="Script" id=12]
@@ -28,6 +27,13 @@
 [ext_resource path="res://Textures/Wood048_1K-JPG/Wood048_1K_Displacement.jpg" type="Texture" id=26]
 [ext_resource path="res://Models/AllModels/BuildingBrick2.scn" type="PackedScene" id=27]
 [ext_resource path="res://Models/AllModels/BuildingBrick1.scn" type="PackedScene" id=28]
+
+[sub_resource type="GDScript" id=50]
+script/source = "extends Spatial
+
+func _ready() -> void:
+	StateTransitionManager.on_ready()
+"
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 75, 0.5, 40 )
@@ -224,7 +230,7 @@ albedo_color = Color( 0.341176, 0.721569, 1, 1 )
 uv1_triplanar = true
 
 [node name="GameLevel" type="Spatial"]
-script = ExtResource( 9 )
+script = SubResource( 50 )
 
 [node name="========= Level Setup ==========" type="Node" parent="."]
 
