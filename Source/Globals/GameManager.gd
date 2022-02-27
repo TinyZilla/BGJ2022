@@ -25,14 +25,14 @@ var event_list: Array = [
 	},
 	{	#5
 		"action": "pause",
-		"duration": 4.0
+		"duration": 3.0
 	},
 	{	#6
 		"action": "viewchange"
 	},
 	{	#7
 		"action": "pause",
-		"duration": 5.0
+		"duration": 6.0
 	},
 	{	#8
 		"action": "spawn_enemies",
@@ -90,7 +90,7 @@ var event_list: Array = [
 	},
 	{	#18
 		"action": "pause",
-		"duration": 4.0
+		"duration": 3.0
 	},
 	{	#19
 		"action": "viewchange"
