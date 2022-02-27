@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Models/ReExportedPirate/CutlassBlade.material" type="Material" id=1]
 [ext_resource path="res://Source/Entities/Entity.tscn" type="PackedScene" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://Models/ReExportedPirate/PirateBoot.material" type="Material" id=16]
 [ext_resource path="res://Source/Enemies/AttackModule.gd" type="Script" id=17]
 [ext_resource path="res://Audio/SFX/Enemy_Footstep1.wav" type="AudioStream" id=18]
+[ext_resource path="res://Source/Enemies/Footsteps.gd" type="Script" id=19]
+[ext_resource path="res://Source/Enemies/Slash.gd" type="Script" id=20]
 
 [sub_resource type="ArrayMesh" id=19]
 resource_name = "bgjassets_Cube048"
@@ -1904,6 +1906,7 @@ tracks/152/keys = {
 resource_name = "runLegs"
 length = 0.55
 loop = true
+step = 0.02
 tracks/0/type = "transform"
 tracks/0/path = NodePath("PirateRig/Skeleton:defspine_6")
 tracks/0/interp = 1
@@ -2969,20 +2972,20 @@ tracks/151/imported = false
 tracks/151/enabled = true
 tracks/151/keys = PoolRealArray( 0, 1, 0.000252843, -0.00110728, 0.0334111, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0.000553668, -0.0024249, 0.0731676, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0.000247031, -0.00108182, 0.0326442, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.2, 1, -0.000901967, 0.00395072, -0.119204, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.266667, 1, -0.000507385, 0.0022223, -0.067054, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0.000641674, -0.00281018, 0.0847938, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.4, 1, 0.000247031, -0.00108182, 0.0326442, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.466667, 1, -0.000901967, 0.00395072, -0.119204, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.533333, 1, -0.000199795, 0.000875235, -0.0264078, -9.31323e-10, 0, 0, 1, 1, 1, 1, 0.55, 1, 6.4224e-05, -0.000281215, 0.00848648, -9.31323e-10, 0, 0, 1, 1, 1, 1 )
 tracks/152/type = "method"
-tracks/152/path = NodePath("Footstep")
+tracks/152/path = NodePath("EnemyFootsteps")
 tracks/152/interp = 1
 tracks/152/loop_wrap = true
 tracks/152/imported = false
 tracks/152/enabled = true
 tracks/152/keys = {
-"times": PoolRealArray( 0.2, 0.5 ),
+"times": PoolRealArray( 0.18, 0.44 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ 0.0 ],
-"method": "play"
+"args": [  ],
+"method": "footstep"
 }, {
-"args": [ 0.0 ],
-"method": "play"
+"args": [  ],
+"method": "footstep"
 } ]
 }
 
@@ -4068,7 +4071,7 @@ bones/211/enabled = true
 bones/211/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Body/RePirate/PirateRig/Skeleton" index="0"]
-transform = Transform( -0.917985, -0.324701, 0.227757, 0.350592, -0.932826, 0.0831996, 0.185442, 0.156226, 0.970157, -0.356527, 1.09327, -0.0797571 )
+transform = Transform( -0.935066, 0.048543, 0.351133, 0.273585, -0.531036, 0.801969, 0.225394, 0.845958, 0.483273, -0.175151, 0.973441, 0.224986 )
 bone_name = "hand_ik_r"
 
 [node name="Cutlass" type="MeshInstance" parent="Body/RePirate/PirateRig/Skeleton/BoneAttachment" index="0"]
@@ -4095,7 +4098,6 @@ script = ExtResource( 17 )
 [node name="AnimationTree" type="AnimationTree" parent="Body/RePirate/AttackModule" index="0"]
 tree_root = SubResource( 18 )
 anim_player = NodePath("../../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 16 )
 
 [node name="Area" type="Area" parent="Body/RePirate/AttackModule" index="1"]
@@ -4113,17 +4115,19 @@ shape = SubResource( 17 )
 anims/SwordSlash = SubResource( 11 )
 anims/runLegs = SubResource( 12 )
 
-[node name="Footstep" type="AudioStreamPlayer3D" parent="Body/RePirate" index="3"]
+[node name="EnemyFootsteps" type="AudioStreamPlayer3D" parent="Body/RePirate" index="3"]
 stream = ExtResource( 18 )
-max_db = 2.0
+unit_size = 2.0
 max_distance = 20.0
 bus = "SFX"
+script = ExtResource( 19 )
 
 [node name="Slash" type="AudioStreamPlayer3D" parent="Body/RePirate" index="4"]
 stream = ExtResource( 11 )
 max_db = 1.0
 max_distance = 20.0
 bus = "SFX"
+script = ExtResource( 20 )
 
 [node name="Legs" parent="." index="3"]
 _max_velocity = 4.0

@@ -12,6 +12,7 @@ var state_machine
 
 func _ready() -> void:
 	var tree = $AnimationTree
+	tree.active = true
 	state_machine = tree["parameters/playback"]
 
 func update_objective(objective: Vector3) -> void:

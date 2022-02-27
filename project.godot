@@ -45,10 +45,15 @@ EnemySpawner="*res://Source/Globals/EnemySpawner.gd"
 StateTransitionManager="*res://Source/Globals/StateTransitionManager.tscn"
 SkyfallManager="*res://Source/Globals/SkyfallManager.tscn"
 GameManager="*res://Source/Globals/GameManager.gd"
+AudioManager="*res://addons/audio_manager_nekoto/AudioManager.tscn"
 
 [display]
 
 window/dpi/allow_hidpi=true
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/audio_manager_nekoto/plugin.cfg" )
 
 [input]
 

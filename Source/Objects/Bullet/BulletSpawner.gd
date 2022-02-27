@@ -8,6 +8,7 @@ onready var camera : Camera = get_node(camera_path)
 onready var bullet_raycast = $BulletRayCast
 
 const bullet_scene = preload("res://Source/Objects/Bullet/Bullet.tscn")
+const shoot_sfx = preload("res://Audio/SFX/Player_Laser2.wav")
 
 func _ready():
 	bullet_raycast.set_as_toplevel(true)
@@ -40,3 +41,5 @@ func instance_bullet() -> void:
 	var forward_point : Vector3 = global_transform.origin - global_transform.basis.z
 	forward_point = global_transform.origin + velocity.normalized()
 	b.look_at(forward_point, Vector3.UP)
+	
+	AudioManager.play_sfx(shoot_sfx, "SFX", -15.0)

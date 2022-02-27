@@ -4,6 +4,11 @@ export(float) var max_velocity: float = 10.0
 export(float) var accel_time: float = 0.2
 export(float) var decel_time = 0.4
 
+const footsteps_sfx := [
+	preload("res://Audio/SFX/Player_Pain1.wav"),
+	preload("res://Audio/SFX/Player_Pain2.wav"),
+]
+
 func enter(init_arg: Dictionary = {}) -> void:
 	.enter(init_arg)
 

@@ -6,6 +6,7 @@ export(float) var MAX_HEALTH = 4.0
 var health : float = MAX_HEALTH
 
 const death_vfx = preload("res://Source/VFX/EnemyDeathVFX.tscn")
+const hurt_sfx = preload("res://Source/Enemies/EnemyHurtSFX.tscn")
 
 func _enter_tree() -> void:
 	WaveManager.add_enemy()
@@ -21,6 +22,10 @@ func _exit_tree() -> void:
 func hurt(damage : float) -> void:
 	health -= damage
 	health = clamp(health, 0.0, MAX_HEALTH)
-
+	
+	var hs = hurt_sfx.instance()
+	get_tree().current_scene.add_child(hs)
+	hs.global_transform.origin = global_transform.origin
+	
 	if health == 0.0:
 		queue_free()
