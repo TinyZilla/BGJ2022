@@ -10,7 +10,6 @@ const footsteps_sfx := [
 	preload("res://Audio/SFX/Player_Footstep1.wav"),
 	preload("res://Audio/SFX/Player_Footstep2.wav"),
 ]
-
 onready var footsteps_timer = $Timer
 
 func enter(init_arg: Dictionary = {}) -> void:
@@ -47,4 +46,4 @@ func play_footsteps_sfx():
 	
 	var stream = footsteps_sfx[footsteps_i]
 	footsteps_i += 1
-	AudioManager.play_sfx(stream, "SFX", -15.0)
+	AudioManager.play_sfx(stream, "SFX", -5.0)

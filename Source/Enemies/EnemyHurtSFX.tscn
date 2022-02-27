@@ -5,7 +5,7 @@
 
 [node name="EnemyHurtSFX" type="AudioStreamPlayer3D"]
 stream = ExtResource( 2 )
-unit_size = 4.0
+unit_size = 2.0
 bus = "SFX"
 script = ExtResource( 1 )
 

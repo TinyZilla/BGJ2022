@@ -42,4 +42,4 @@ func instance_bullet() -> void:
 	forward_point = global_transform.origin + velocity.normalized()
 	b.look_at(forward_point, Vector3.UP)
 	
-	AudioManager.play_sfx(shoot_sfx, "SFX", -20.0)
+	AudioManager.play_sfx(shoot_sfx, "SFX", -22.0)

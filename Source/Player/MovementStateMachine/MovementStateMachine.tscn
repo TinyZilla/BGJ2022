@@ -20,6 +20,8 @@ script = ExtResource( 3 )
 [node name="Sprint" type="Node" parent="."]
 script = ExtResource( 2 )
 
+[node name="Timer" type="Timer" parent="Sprint"]
+
 [node name="Jump" type="Node" parent="."]
 script = ExtResource( 5 )
 

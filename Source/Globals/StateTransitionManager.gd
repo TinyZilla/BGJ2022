@@ -40,7 +40,7 @@ const bgm := {
 	"your_reality" : preload("res://Audio/BGM/BGJ_RealityMix.wav"),
 	"combat" : preload("res://Audio/BGM/BGJ_CombatMix.wav")
 }
-var bgm_volume : float = -18.0
+var bgm_volume : float = -25.0
 
 func on_ready() -> void:
 	if overhead_cam == null or player_cam == null:
